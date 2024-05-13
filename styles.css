@@ -1,0 +1,54 @@
+/* custom-styles.css */
+:root {
+    --color-creme: #fefae020;
+    --color-black: #000000;
+    --color-gold: #E69F00;
+    --color-blue: #56B4E9;
+    --color-green: #009E73;
+    --color-yellow: #F0E442;
+    --color-dark-blue: #0072B2;
+    --color-orange: #D55E00;
+    --color-pink: #CC79A7;
+}
+
+.reveal {
+    color: var(--color-black);
+    /* Default text color */
+    /* background-color: var(--color-creme); */
+    /* Background color */
+}
+
+.reveal img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    color: var(--color-dark-blue);
+    /* Headers color */
+}
+
+.reveal a {
+    color: var(--color-blue);
+    /* Hyperlinks */
+}
+
+/* Other custom styles using the color variables */
+
+.citations {
+    text-align: right;
+    color: #808080;
+    /* This is a shade of grey */
+    font-size: 0.5em;
+    /* Smaller text size relative to the surrounding text */
+    /* position: absolute;
+    bottom: 0;
+    right: 0; */
+}
+
+.column65 {
+    font-size: 0.7em;
+}

@@ -1,0 +1,142 @@
+---
+title: "Data Processing for TVB"
+author: "Leon Martin"
+bibliography: references.bib
+references:
+  citeproc: true
+  citations-hover: true
+  csl: apa.csl
+format:
+  revealjs:
+    toc: true
+    auto-stretch: false
+    incremental: false
+    footer: "© Leon Martin 2024"
+    css: styles.css
+
+---
+
+# Introduction
+
+## MR Physics - Overview
+::: {layout="[[-1], [1], [-1]]"}
+![](images/MRPhysics-Overview.svg){fig-align="center"}
+:::
+
+
+## Main Challenges
+- Elucidate brain function in relation to its multiple layers of organization that operate at different spatial and temporal scales
+- Reproducibility Crisis
+  - 10 Different Labs --> 10 different results
+
+::: {.citations}
+[@Akil2011; @BotvinikNezer2020]
+:::
+
+## Analytical Variability in fMRI Data Interpretation
+
+:::: {layout="[ 65, 35 ]"}
+
+::: {#first-column }
+
+<div class=column65>
+  - 70 independent teams analized the same fMRI dataset.
+  - Every team chose a unique workflow to analyze the data.
+  - Variying results of hypothesis tests.
+  - Choice of analysis pipeline has substantial effects on scientific conclusions
+  - Need for validation and sharing of complex image processing workflows.
+</div>
+
+:::
+
+::: {#second-column}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-020-2314-9/MediaObjects/41586_2020_2314_Fig2_HTML.png?as=webp)
+:::
+
+::::
+
+::: {.citations}
+[@BotvinikNezer2020]
+:::
+
+::: {.notes}
+*Figure2*: Investigates statistical variability across 64 different research teams.
+
+**Part A:**
+
+- Spearman correlations calculated between team's whole-brain maps.
+- Maps clustered based on similarity (Ward clustering on Euclidean distances).
+Color coding:
+- Row colors indicate cluster membership (Purple for Cluster 1, Blue for Cluster 2, Grey for Cluster 3).
+- Column colors represent hypothesis decisions (Green for "yes", Red for "no").
+
+**Part B:**
+
+- Shows average statistical maps for each cluster, thresholded at uncorrected z > 2.0.
+- Displays probability of reporting a positive outcome (P_yes) for each cluster.
+- Notes: Maps for Hypothesis 1 and 3 are identical, only differing in the brain regions analyzed.
+
+**Key Takeaway:**
+
+- Highlights significant variability in data interpretation among different research teams.
+- Emphasizes the need for standardized methods in neuroimaging analysis.
+-
+:::
+
+
+## Building Blocks of a Brain Network Model
+![](images/BNM_overview.png)
+
+::: {.citations}
+[@Martin2024]
+:::
+
+## From data to knowledge
+![](images/Data-Knowledge-Arrow.svg){width="auto" height="200"}
+
+::: {.citations}
+[@Schirner2015]
+:::
+
+# Methods
+
+## Data Flow
+```{dot}
+//| label: ProcessingDataFlow
+//| file: DataFlow.dot
+```
+
+## Processing Pipeline
+```{=html}
+<div style="display: flex;">
+    <div style="flex: 1;">
+        <ul>
+            <li>bullet</li>
+            <li>bullet</li>
+        </ul>
+    </div>
+    <div style="flex: 1;">
+        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S1053811915002505-gr1.jpg" style="width: 100%;">
+    </div>
+</div>
+```
+
+
+::: {.citations}
+[@Schirner2015]
+:::
+
+## EEG
+![](images/Zorzos2021_Fig1.webp)
+
+- Empirical: Data is projected to source space to fit model
+- Simulated: Forward-modelling via leadfield matrix
+
+::: {.citations}
+[@Zorzos2021]
+:::
+
+
+## Automated and scaleable processing pipelines
+
+# References

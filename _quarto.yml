@@ -1,0 +1,13 @@
+project:
+  title: "TVB-Processing"
+
+format:
+  revealjs:
+    # Presentation settings
+    incremental: true
+    slide-number: true
+    hash: true
+    ratio: 16x9
+
+editor: visual
+

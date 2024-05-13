@@ -1,0 +1,58 @@
+digraph {
+    node [shape = box; fontsize = 26; style = filled; imagescale = true;];
+    edge [name0 = val0; fontsize = "26";];
+    
+    T1 [label = "T1-weighted MRI Scans";];
+    
+    Parc [label = "Cortical & Subcortical Parcellation";];
+    
+    # EEG
+    EEG [label = "EEG Data";fillcolor = "#CC79A7";];
+    C [label = "Anatomically Constrained Dipole Source Models";];
+    EEGMonitor [label = "Forward Modeling & Inverse Source Reconstruction of EEG/MEG";];
+    E [label = "Lead-Field Matrices & Inversion Kernels";];
+    F [label = "Mapping of Cortical Activity to Scalp Locations of (M)EEG Sensors";];
+    
+    // imgnode[image="apple-touch-icon.png", label=""]
+    
+    # Surface
+    G [label = "Scalp/Head, Skull, and Cortical Surface Triangulations";];
+    
+    H [label = "Surface-based Simulations";];
+    
+    # SC
+    N [label = "Diffusion-weighted MRI (dwMRI) Data";fillcolor = "#CC79A7";];
+    P [label = "Estimated White Matter Fiber Tracts & SC Matrices";];
+    Q [label = "Defining Seed- and Stop-Locations During Tractography";];
+    
+    # Functional
+    I [label = "fMRI Volumes";fillcolor = "#CC79A7";];
+    parcellate [label = "Parcellation";];
+    K [label = "Region-wise Aggregated BOLD Time-Series";];
+    FC [label = "Functional Connectome";];
+    M [label = "Parameter Tuning to Fit Model Output";];
+    
+    S [label = "Projection to Source Space";];
+    
+    T1 -> Parc [label = "parcellate";];
+    Parc -> C;
+    C -> EEGMonitor;
+    EEGMonitor -> E;
+    E -> F;
+    Parc -> G;
+    G -> H;
+    
+    N -> parcellate;
+    Parc -> parcellate;
+    parcellate -> P;
+    P -> Q;
+    
+    I -> parcellate;
+    Parc -> parcellate;
+    parcellate -> K;
+    K -> FC;
+    FC -> M;
+    
+    EEG -> S;
+    S -> M;
+}
