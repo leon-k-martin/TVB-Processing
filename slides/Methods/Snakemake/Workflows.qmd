@@ -22,3 +22,7 @@ graph TD;
   - edges: dependencies
 :::
 ::::
+
+## Example Workflow {.scrollable}
+### HCP's Diffusion Pipeline
+![](slides/Methods/Snakemake/dag.svg){fig-align="center" width=200%}

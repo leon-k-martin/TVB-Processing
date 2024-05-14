@@ -6,10 +6,10 @@
 :::
 :::{.row}
 ::::{.columns}
-:::{.column width=20%}
-![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.2485/MediaObjects/41592_2013_Article_BFnmeth2485_Fig1_HTML.jpg?as=webp){height=200px fig-align='center' width=200px}
+:::{.column width=25%}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.2485/MediaObjects/41592_2013_Article_BFnmeth2485_Fig1_HTML.jpg?as=webp){height=200px fig-align='center' width=250px}
 :::
-:::{.column width=80%}
+:::{.column width=75%}
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-47860-x/MediaObjects/41467_2024_47860_Fig1_HTML.png?as=webp){height=200px fig-align='center'}
 :::
 ::::
