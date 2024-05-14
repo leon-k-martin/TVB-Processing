@@ -1,9 +1,14 @@
 ---
-title: "Data Processing for TVB"
+title: "Data Processing for Building Digital Brain Twins with The Virtual Brain"
+title-slide-attributes:
+  data-background-image: images/Tractography_animated_lateral_view.gif
+  data-background-size: cover
+  data-background-opacity: "0.3"
 author:
   - name: Leon Martin
     email: leon.martin@bih-charite.de
     affiliations: Berlin Institute of Health at Charité University Medicine Berlin
+date: last-modified
 bibliography: references.bib
 references:
   citeproc: true
@@ -11,6 +16,8 @@ references:
   csl: apa.csl
 format:
   revealjs:
+    chalkboard:
+      buttons: true
     mermaid:
       theme: neutral
     theme: [default, clean.scss]
@@ -25,64 +32,32 @@ execute:
 ---
 
 # Introduction
+{{< include slides/Theory/BrainNetworks/ChallangesBrainModeling.qmd >}}
 
 {{< include slides/Theory/MR_Physics/Overview.qmd >}}
 
 
-## Main Challenges {.r-fit-text}
+{{< include slides/Theory/Reproducibility/BotvinikNezer2020.qmd >}}
 
+{{< include slides/Theory/BrainNetworks/ConceptsAndTerminology.qmd >}}
+
+## Simulating Whole-Brain Dynamics
 :::: {.columns}
-:::{.column width=50% .r-fit-text .smaller}
-**Goal of neuroimaging**: Elucidate brain function in relation to its multiple layers of organization that operate at different spatial and temporal scales
 
-:::{.callout-warning}
-1. Challenging integration across spatiotemporal scales [@Akil2011]
-2. Limited reproducibility of imaging studies [@BotvinikNezer2020]
-3. Reproducible brain imaging studies require huge sample sizes [@Marek2022]
+::: {.column width=40%}
+- Multimodal data integration
+- Models simulating local neural activity are coupled based on a whole-brain network
+- Empirical data features can be used for parameter optimization and model fitting
 :::
 
-↳ Brain network models help understanding multi-scale brain dynamics by integrating individual **structural** and **functional** data with neural population models [@Schirner2018].
-:::
-:::{.column width=50% style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.6em;"}
-![](https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig1-v2.tif/full/1500,/0/default.jpg)
-![](https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig2-v2.tif/full/1500,/0/default.jpg)
+::: {.column width=60%}
+![](https://ars.els-cdn.com/content/image/1-s2.0-S0960982218310455-gr1_lrg.jpg){width=900px fig-align="right"}
 :::
 ::::
 
 ::: {.citations}
-[@Schirner2018]
+[@Deco2018]
 :::
-
-::: {.notes}
-- **Figure1**
-  - Construction: Derived from diffusion-weighted MRI tractography and anatomical MRI region parcellations.
-  - Node Injection: Nodes receive subject-specific EEG source activity time series instead of noise.
-  - fMRI Prediction: Predicted fMRI time series are matched to each subject’s empirical fMRI data, acquired simultaneously with EEG.
-  - Network Structure:
-    - Local Networks: Comprise excitatory (E) and inhibitory (I) neural population models driven by EEG source activity (red arrows).
-    - Global Coupling: Nodes are connected by structural connectomes (green arrows), representing white matter coupling strengths.
-  - Analysis:
-    - Synaptic Input Currents (Equations 1 and 2)
-    - Firing Rates (Equations 3 and 4)
-    - Synaptic Activity (Equations 5 and 6)
-  - Purpose: To relate neural population activity and network interactions to observable neuroimaging signals.
-  - Visualization: See Video 1 for a brain network model construction and simulation results.
-
-- **Figure2**
-  a) Neuron firing decreases during peaks of α-waves and increases during troughs (Haegens et al., 2011).
-  b) Simulations show an inverse relationship between neuron firing and α-phase due to neural excitation and inhibition balance (Atallah and Scanziani, 2009).
-  c) On a longer timescale (<0.25 Hz), firing rates oscillate inversely to α-band power (Haegens et al., 2011).
-  d) Model simulations link α-band power oscillations to fMRI oscillations, predicting resting-state fMRI time series and spatial patterns (de Munck et al., 2008).
-  e) Scale-free fMRI power spectra emerge from long-range network input (He, 2011).
-  f) Functional connectivity matrices were predicted over varying time windows (Allen et al., 2014).
-:::
-
-{{< include slides/Theory/Reproducibility/BotvinikNezer2020.qmd >}}
-
-
-{{< include slides/Theory/BrainNetworks/ConceptsAndTerminology.qmd >}}
-
-## Brain Simulation
 
 {{< include slides/Theory/BrainNetworks/BNM.qmd >}}
 
@@ -93,6 +68,13 @@ execute:
 
 ## Empirical data features
 {{< include slides/Theory/BrainNetworks/Connectomes.qmd >}}
+
+## EEG
+![](images/Zorzos2021_Fig1.webp)
+
+- Empirical: Data is projected to source space to fit model
+- Simulated: Forward-modelling via leadfield matrix
+
 
 ## From data to knowledge
 ![](images/Data-Knowledge-Arrow.svg){width="auto" height="200"}
@@ -115,18 +97,12 @@ execute:
 {{< include slides/Methods/MinimalPreprocessing/HCP.qmd >}}
 
 
-## EEG
-![](images/Zorzos2021_Fig1.webp)
-
-- Empirical: Data is projected to source space to fit model
-- Simulated: Forward-modelling via leadfield matrix
 
 ::: {.citations}
 [@Zorzos2021]
 :::
 
 
-## Automated and scaleable processing pipelines
 {{< include slides/Methods/Snakemake/Overview.qmd >}}
 
 {{< include slides/Methods/Snakemake/Rules.qmd >}}
