@@ -1,0 +1,29 @@
+## MR-Physics Overview
+
+![](slides/Theory/MR_Physics/Overview.svg){width=80% fig-align="center"}
+
+:::: {.columns}
+::: {.column width="75%" .r-fit-text}
+**Larmor Equation:**
+  $$ \omega = \gamma B_0 $$
+
+  - $\omega$: Larmor precession frequency
+  - $\gamma$: gyromagnetic ratio ($\gamma_p ≈ 42.577 \text{ MHz/T}$ For protons of a hydrogen nucleus)
+  - $B_0$: External magnetic field strength
+:::
+::: {.column width="25%"}
+::: {.r-stack}
+![](slides/Theory/MR_Physics/B0-Field/ProtonSpin.png){.fragment width="450"}
+
+![](slides/Theory/MR_Physics/B0-Field/Magnet.png){.fragment width="450"}
+
+![](slides/Theory/MR_Physics/B0-Field/ProtonsAlign.png){.fragment width="450"}
+
+![](slides/Theory/MR_Physics/B0-Field/Precession.png){.fragment width="450"}
+:::
+:::
+::::
+
+::: {.citations}
+[@Schild1992]
+:::

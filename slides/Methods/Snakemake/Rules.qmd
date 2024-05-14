@@ -1,0 +1,118 @@
+## Rule-based modular workflows
+
+:::: {.columns}
+
+:::{.column width=50% .r-fit-text .smaller}
+::: {style="margin-top: 20px;  margin-bottom: 0px;"}
+:::{.callout-note}
+**Rule**: Set of instructions that specifies input and output files along with a shell command for transformation.
+:::
+
+- **Benchmarking** for resource management
+- Option for **caching** between workflows
+- **Reusable** standardized wrappers for common tasks
+
+{{< include slides/Methods/Snakemake/rule_classdiagram.qmd >}}
+:::
+:::
+
+:::{.column width=50%}
+::: {style="margin-top: 20px;  margin-bottom: 0px; font-size: 0.6em;"}
+```python
+rule create_sc:
+    input:
+        parc=rules.mmp_vol_to_mrtrix.output.parc,
+        tracks=rules.run_tractography.output.tracks,
+        sift_weights=rules.run_sift.output.sift_weights,
+    output:
+        weights=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_weights.csv"),
+        lengths=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_lengths.csv"),
+        assignments=join(MRTrix_out,
+                        "assignments.txt"),
+    threads: config["nthreads"]
+    container:
+        config["containers"]["mrtrix"]
+    shell:
+        """
+        tck2connectome {input.tracks} {input.parc} {output.weights} \
+            -tck_weights_in {input.sift_weights} \
+            -out_assignments {output.assignments} \
+            -symmetric -zero_diagonal -nthreads {threads}
+
+        tck2connectome {input.tracks} {input.parc} {output.lengths} \
+            -tck_weights_in {input.sift_weights} \
+            -symmetric -zero_diagonal -scale_length -stat_edge mean \
+            -nthreads {threads}
+        echo $(date) > {output.done}
+        """
+```
+:::
+:::
+
+
+::::
+
+
+
+
+<!--
+
+:::
+:::
+
+:::{.column width=60%}
+
+## {auto-animate=true}
+::: {style="margin-top: 20px; font-size: 0.7em;"}
+```python
+rule create_sc:
+    input:
+        parc=rules.mmp_vol_to_mrtrix.output.parc,
+        tracks=rules.run_tractography.output.tracks,
+        sift_weights=rules.run_sift.output.sift_weights,
+    output:
+        weights=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_weights.csv"),
+        lengths=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_lengths.csv"),
+        assignments=join(MRTrix_out,
+                        "assignments.txt"),
+    threads: config["nthreads"]
+    container:
+        config["containers"]["mrtrix"]
+    shell:
+        """
+        tck2connectome {input.tracks} {input.parc} {output.weights} \
+            -tck_weights_in {input.sift_weights} \
+            -out_assignments {output.assignments} \
+            -symmetric -zero_diagonal -nthreads {threads}
+
+        tck2connectome {input.tracks} {input.parc} {output.lengths} \
+            -tck_weights_in {input.sift_weights} \
+            -symmetric -zero_diagonal -scale_length -stat_edge mean \
+            -nthreads {threads}
+        echo $(date) > {output.done}
+        """
+```
+:::
+:::
+:::: -->
+
+::: {.notes}
+
+1. **Rule Definition**:
+    - **Input**: Specifies the input files needed for the task.
+    - **Output**: Defines the expected output files.
+    - **Threads**: Configures the number of threads for parallel processing.
+    - **Container**: Specifies the container to use for running the task.
+    - **Shell**: Contains the actual commands to execute.
+
+2. **Key Features Highlighted**:
+    - **Benchmarking for Resource Allocation**: Important for optimizing workflow performance.
+    - **Caching Between Workflows**: Useful for reusing intermediate results to save computation time.
+    - **Standardized Wrappers**: Promotes reusability and standardization of common tasks.
+
+This structure makes it easy for your audience to understand how Snakemake rules are constructed and the benefits of using them in workflows.
+:::

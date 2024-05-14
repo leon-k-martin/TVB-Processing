@@ -1,0 +1,45 @@
+## Network concepts and terminology
+
+::::{.rows}
+:::{.row}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnn.3690/MediaObjects/41593_2014_Article_BFnn3690_Fig1_HTML.jpg?as=webp){height=300px fig-align='center'}
+:::
+:::{.row}
+::::{.columns}
+:::{.column width=20%}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.2485/MediaObjects/41592_2013_Article_BFnmeth2485_Fig1_HTML.jpg?as=webp){height=200px fig-align='center' width=200px}
+:::
+:::{.column width=80%}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-47860-x/MediaObjects/41467_2024_47860_Fig1_HTML.png?as=webp){height=200px fig-align='center'}
+:::
+::::
+:::
+::::
+
+::: {.citations}
+[@Sporns2014; @Sporns2013; @Koller2024]
+:::
+
+::: {.notes}
+- **Connection Matrix (a)**:
+  - Summarizes binary pairwise relations among 20 nodes.
+  - Black indicates presence, white indicates absence of a symmetric connection.
+
+- **Reordered Matrix (b)**:
+  - Nodes reordered for optimal modularity partition.
+  - Displays three network modules (red, green, blue).
+
+- **Spring-Embedded 2D Network Diagram (c)**:
+  - Visual representation of the network from (a) and (b).
+  - Nodes colored by module assignments.
+  - Highlighted nodes based on various network measures:
+    - **Node 1**:
+      - High degree (many connections).
+      - High betweenness centrality (on many short paths).
+      - High participation coefficient (broadly distributed connections across modules).
+      - Low clustering (neighbors are not mutually connected).
+    - **Node 15**: High clustering.
+    - **Node 8**: Low betweenness.
+    - **Node 14**: Low degree.
+    - **Node 7**: Low participation coefficient.
+:::

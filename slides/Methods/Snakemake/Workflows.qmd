@@ -1,0 +1,24 @@
+## Writing Workflows {.r-fit-text}
+:::: {.columns}
+
+::: {.column width=30%}
+```{mermaid}
+graph TD;
+    A[Target Output] --> R2[rule 2];
+    R2 --> O1[Output 1]
+    O1 --> R1[rule 1]
+    R1 --> I1[data/Input 1];
+    R1 --> I2[data/Input 2];
+```
+:::
+
+::: {.column width=70%}
+**Top down applicatio of rules within a Snakefile**:
+
+- Application of a rule to generate a set of output fiels is called **job**
+- For each input file of a job, Snakemake recursively determines rules that can be applied to generate it.
+- **Directed acyclic graph** (DAG) of jobs
+  - nodes: rules
+  - edges: dependencies
+:::
+::::

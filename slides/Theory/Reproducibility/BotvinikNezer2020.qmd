@@ -1,0 +1,54 @@
+## Analytical Variability in fMRI Data Interpretation
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+:::: {.rows}
+::: {.row}
+  - 70 independent teams analized the same fMRI dataset.
+  - Every team chose a unique workflow to analyze the data.
+  - Choice of analysis pipeline had substantial effects on scientific results conclusions
+:::
+::: {.row}
+![](https://media.nature.com/lw767/magazine-assets/d41586-020-01282-z/d41586-020-01282-z_17986592.png?as=webp){fig-align="center"}
+:::
+::::
+
+:::
+
+::: {.column width="40%"}
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-020-2314-9/MediaObjects/41586_2020_2314_Fig2_HTML.png?as=webp)
+:::
+
+::::
+
+::: {.citations}
+[@BotvinikNezer2020; @Lindquist2020]
+:::
+
+::: {.notes}
+- **Need for validation and sharing of complex image processing workflows!!**
+
+*Figure2*: Investigates statistical variability across 64 different research teams.
+
+**Part A:**
+
+- Spearman correlations calculated between team's whole-brain maps.
+- Maps clustered based on similarity (Ward clustering on Euclidean distances).
+Color coding:
+- Row colors indicate cluster membership (Purple for Cluster 1, Blue for Cluster 2, Grey for Cluster 3).
+- Column colors represent hypothesis decisions (Green for "yes", Red for "no").
+
+**Part B:**
+
+- Shows average statistical maps for each cluster, thresholded at uncorrected z > 2.0.
+- Displays probability of reporting a positive outcome (P_yes) for each cluster.
+- Notes: Maps for Hypothesis 1 and 3 are identical, only differing in the brain regions analyzed.
+
+**Key Takeaway:**
+
+- Highlights significant variability in data interpretation among different research teams.
+- Emphasizes the need for standardized methods in neuroimaging analysis.
+-
+:::

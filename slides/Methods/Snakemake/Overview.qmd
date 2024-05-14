@@ -1,0 +1,6 @@
+## Scaleable workflows with Snakemake
+
+- workflow management system for creating reproducible and scalable data analysis pipelines.
+- python-based
+- workflow definitions interoperable with hcp cluster or cloud computing **and** local execution.
+- automatic deployment to any environment

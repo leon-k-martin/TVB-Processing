@@ -1,0 +1,26 @@
+
+```{python}
+# | label: fig-connectomes
+# | fig-cap: "Average structural and functional connectomes"
+import utils
+import matplotlib.pyplot as plt
+import networkx as nx
+
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(10, 5), layout="tight")
+
+ax[0, 0].imshow(utils.sc, interpolation="None", cmap="magma")
+ax[0, 1].imshow(utils.fc, interpolation="None", cmap="magma")
+ax[0, 1].set_title("Functional Connectivity", fontsize=16)
+ax[0, 0].set_title("Structural Connectivity", fontsize=16)
+
+
+for i, matrix in enumerate([utils.sc, utils.fc]):
+    G, node_colors, node_shapes = utils.matrix2graph(matrix)
+    pos = nx.spring_layout(G, weight="weight", iterations=1000, seed=42)
+    ax[1, i].axis("off")
+    nx.draw_networkx_edges(G, pos=pos, edge_color="black", width=0.1, ax=ax[1, i])
+    for node, (x, y) in pos.items():
+        ax[1, i].scatter(x, y, s=50, color=node_colors[node], marker=node_shapes[node])
+
+plt.show()
+```

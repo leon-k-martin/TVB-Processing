@@ -1,0 +1,41 @@
+```{mermaid}
+classDiagram
+    class Rule {
+    }
+
+    class Input {
+        +List files
+    }
+
+    class Output {
+        +List files
+    }
+
+    class Params {
+        +Dict key_values
+    }
+
+    class Threads {
+        +Int count
+    }
+
+    class Container {
+        +String name
+    }
+
+    class Shell {
+        +String command
+    }
+
+    class Log {
+        +String file
+    }
+
+    Rule --> Input
+    Rule --> Output
+    Rule --> Params
+    Rule --> Threads
+    Rule --> Container
+    Rule --> Shell
+    Rule --> Log
+```

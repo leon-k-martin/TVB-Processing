@@ -1,0 +1,36 @@
+## Processing Pipeline
+:::: {.columns}
+:::{.column}
+<div height=100px>
+    ```{mermaid }
+    %%| fig-height: 0.1
+
+    graph TD
+        subgraph Diffusion
+            DWI --> Tractogram[Registered Tractogram]
+            Bvals --> Tractogram
+            Bvecs --> Tractogram
+        end
+
+        subgraph Functional
+            BOLD --> Rts[Registered time series]
+            Fieldmap --> Rts
+
+        end
+
+        subgraph Structural
+            T1w --> Parcellation
+            T1w --> Surface
+            T2w --> Surface
+        end
+
+        T1w --> Rts
+        T1w --> Tractogram
+    ```
+</div>
+
+:::
+:::{.column}
+![](https://ars.els-cdn.com/content/image/1-s2.0-S1053811915002505-gr1.jpg)
+:::
+::::
