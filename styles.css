@@ -50,5 +50,10 @@
 }
 
 .column65 {
-    font-size: 0.7em;
+    font-size: 0.6em;
+}
+
+.reveal .toc-content {
+    font-size: 0.2em;
+    /* Adjust this value to your preference */
 }
