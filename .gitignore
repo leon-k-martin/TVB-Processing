@@ -2,3 +2,8 @@
 TVBProcessing_files
 images/.DS_Store
 .DS_Store
+
+/.quarto/
+__pycache__
+animation
+.jupyter_cache
