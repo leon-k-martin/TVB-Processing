@@ -4,7 +4,7 @@ This repository contains the presentation for the talk "Data Processing for Buil
 
 
 ## Presentation
-You can view the presentation [here]().
+You can view the presentation [here](https://virtual-twin.github.io/Presentation-TVB-Data-Processing/#/title-slide).
 
 The presentation is built using [Quarto](https://quarto.org/) and [revealjs](https://revealjs.com/).
 
