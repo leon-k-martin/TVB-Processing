@@ -1,0 +1,58 @@
+```{mermaid}
+%%| fig-height: 0.1
+
+graph TD
+    subgraph Diffusion
+        DWI[Original Diffusion Data] --> b0[b0 Intensity Normalization]
+        b0 --> Topup[EPI Distortion Correction]
+        b0 --> Eddy[Eddy Current and Motion Correction]
+        Topup --> Eddy
+        Eddy --> Grad[Gradient Nonlinearity Correction]
+        Grad --> Reg[Registration to Native T1-Space]
+
+        Bvals --> Tractogram[Registered Tractogram]
+        Bvecs --> Tractogram
+        Tractogram --> SC
+    end
+
+    Parc --> SC
+
+    subgraph Functional
+        BOLD[Orig. time series] --> Rts[Registered Time Series]
+        SBref --> moco[Motion Correction]
+        BOLD --> moco
+        Fieldmap --> fieldpreproc[Fieldmap Preprocessing]
+        fieldpreproc --> distcorr[EPI Image Distortion Correction]
+        moco --> distcorr
+        distcorr --> regts[Registration to T1w and MNI]
+        regts --> intnorm[Intensity Normalization]
+        intnorm --> vol2surf[Volume to Surface Mapping]
+        vol2surf --> res[Resampling to 32k Mesh]
+
+    end
+        Surface --> vol2surf
+
+    subgraph Structural
+        T1w --> Align[ACPC Align]
+        T2w --> Align
+        Align --> BrainExt[Brain Extract]
+        BrainExt --> Dist[Distortion Correction]
+        Dist --> BBR[BBR T1/T2 in Native Volume Space]
+        BBR --> Bias[Bias Field Correction]
+        Bias --> Flirt[MNI Nonlinear Volume Registration]
+        Flirt --> Freesurfer[HCP-Freesurfer recon-all]
+        Freesurfer -->|fine tune| BBR
+        Freesurfer --> Surface[High res pial surface]
+        Surface --> surfreg[Registration to *fsaverage*]
+        Surface --> volreg[Native surface in MNI space]
+        surfreg --> surfvolreg[164k registered surface in MNI space]
+        volreg --> surfvolreg
+        surfvolreg --> 32k[Downsampled 32k registered surface in MNI space]
+        Surface --> Parc[Parcellation Atlas]
+        Bias --> regts
+        Flirt --> regts
+
+    end
+
+    T1w --> Reg
+```

@@ -4,6 +4,7 @@
 
 ::: {.column width=70%}
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature18933/MediaObjects/41586_2016_Article_BFnature18933_Fig3_HTML.jpg?as=webp){height=500px width=auto}
+
 :::
 ::: {.column width=30%}
 ![](slides/Methods/MinimalPreprocessing/Glasser2013_Cifti.jpeg){height=500px width=auto}

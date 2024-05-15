@@ -4,18 +4,23 @@
 ::: {.column width=80%}
 ```{python}
 # | label: fig-connectomes
-# | fig-cap: "Average structural and functional connectomes"
+# | fig-cap: "Average parcellated structural and functional connectomes (84 Areas)"
 import utils
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
 
 fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(8, 5), layout="tight")
 
-ax[0, 0].imshow(utils.sc, interpolation="None", cmap="magma")
-ax[0, 1].imshow(utils.fc, interpolation="None", cmap="magma")
+ax[0, 0].imshow(np.log1p(utils.sc), cmap="magma")
+
+ax[0, 1].imshow(utils.fc, cmap="magma")
 ax[0, 1].set_title("Functional Connectivity", fontsize=16)
 ax[0, 0].set_title("Structural Connectivity", fontsize=16)
 
+for a in [ax[0, 0], ax[0, 1]]:
+    a.set_xlabel("ROI")
+    a.set_ylabel("ROI")
 
 for i, matrix in enumerate([utils.sc, utils.fc]):
     G, node_colors, node_shapes = utils.matrix2graph(matrix)
@@ -30,6 +35,10 @@ plt.show()
 :::
 
 ::: {.column width=20% layout="[[-1], [1], [-1]]"}
-![](images/DesikanKillianySurface.svg)
+![](images/DesikanKillianySurface.svg){width=800px}
 :::
 ::::
+
+::: {.citations}
+[@Fischl2002; @Desikan2006]
+:::

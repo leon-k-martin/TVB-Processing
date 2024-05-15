@@ -1,42 +1,12 @@
 ## MRI Processing Pipeline
-
-:::: {.columns}
-:::{.column}
-<div height=100px>
-    ```{mermaid }
-    %%| fig-height: 0.1
-
-    graph TD
-        subgraph Diffusion
-            DWI --> Tractogram[Registered Tractogram]
-            Bvals --> Tractogram
-            Bvecs --> Tractogram
-        end
-
-        subgraph Functional
-            BOLD --> Rts[Registered time series]
-            Fieldmap --> Rts
-
-        end
-
-        subgraph Structural
-            T1w --> Parcellation
-            T1w --> Surface
-            T2w --> Surface
-        end
-
-        T1w --> Rts
-        T1w --> Tractogram
-    ```
-</div>
-
-:::
-:::{.column}
-![](https://ars.els-cdn.com/content/image/1-s2.0-S1053811915002505-gr1.jpg)
-:::
-::::
-
+![](images/Pipeline.svg){width=80% fig-align="center"}
 
 ::: {.citations}
 [@Schirner2015]
+:::
+
+::: {.notes}
+-  T1w and T2w images are processed through the same steps in parallel up until cross-modal registration.
+-  A field map is used to remove readout distortion in the T1w and T2w images, which slightly improves their alignment and the resulting myelin maps.
+-  Bias Field Correction: $\sqrt{T1w * T2w}$
 :::

@@ -78,7 +78,7 @@ execute:
 
 
 ## Local and Global Connectivity
-![](https://ars.els-cdn.com/content/image/1-s2.0-S1053811915000051-gr4_lrg.jpg){width=700px fig-align="center"}
+![](images/Global_Local_Connectivity.svg){width=700px fig-align="center"}
 
 ::: {.citations}
 [@SanzLeon2015]
