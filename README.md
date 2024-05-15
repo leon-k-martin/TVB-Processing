@@ -2,6 +2,12 @@
 
 This repository contains the presentation for the talk "Data Processing for Building Digital Brain Twins" given at the 2024 ILAE Congress.
 
+
+## Presentation
+You can view the presentation [here]().
+
+The presentation is built using [Quarto](https://quarto.org/) and [revealjs](https://revealjs.com/).
+
 ### Build Presentation
 
 ```bash
