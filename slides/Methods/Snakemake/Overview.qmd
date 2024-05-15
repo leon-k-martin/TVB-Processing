@@ -1,6 +1,5 @@
 ## Scaleable workflows with Snakemake
 
-
 :::: {.columns}
 ::: {.column}
 ![](https://snakemake.readthedocs.io/en/stable/_static/logo-snake.svg){fig-align="center" style="margin-bottom:0px"}
