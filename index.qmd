@@ -76,4 +76,6 @@ execute:
 
 {{< include slides/Methods/BIDS.qmd >}}
 
+{{< include slides/Methods/Datalad.qmd >}}
+
 # References

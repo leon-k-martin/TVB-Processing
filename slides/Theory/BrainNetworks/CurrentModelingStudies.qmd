@@ -1,4 +1,5 @@
-## Current Modeling Studies {.nostretch .r-resize-text .smaller .column-margin=0px}
+## Current Modeling Studies {.smaller}
+
 ::: {layout="[[1,1],[1,1]]" margin-top=0px margin-bottom=0px}
 ![Dynamical Brain Model of Decision Making Processes [@Schirner2023]](images/Schirner2023_Fig2.png){width=75% fig-align="center" margin-top=0px}
 

@@ -5,13 +5,13 @@ from scipy.io import loadmat
 import pandas as pd
 
 
-fc = loadmat("data/HCP_DK-FC_DK-SC_Glasser-FCD/avgFC_DK.mat")["avgFC"]
+fc = loadmat("data/Connectomes/avgFC_DK.mat")["avgFC"]
 
-sc = loadmat("data/HCP_DK-FC_DK-SC_Glasser-FCD/avgSC_DK.mat")["SC_avg_weights"]
+sc = loadmat("data/Connectomes/avgSC_DK.mat")["SC_avg_weights"]
 
 
 df_info = pd.read_csv(
-    "data/HCP_DK-FC_DK-SC_Glasser-FCD/fs_default.txt",
+    "data/Connectomes/fs_default.txt",
     sep="\s+",
     comment="#",
     header=None,

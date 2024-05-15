@@ -34,5 +34,54 @@
 :::
 
 
-
 ## BIDS Extension Computational Modeling (BEP034)
+
+:::: {.columns}
+::: {.column width=50%}
+- Network Graphs
+- Systems of Mathematical Equations
+- Computer Code
+- File formats: `tsv`, `JSON`, and `XML`
+:::
+::: {.column width=50%}
+:::{.r-stack}
+![](images/example_graph_sc.svg){.fragment fig-align="center" width=50%}
+
+![](images/G2d_Equations.svg){.fragment fig-align="center" width=80%}
+
+:::{.fragment .smaller}
+```python{.tiny}
+from tvb.simulator.models import Epileptor
+```
+:::
+
+:::
+:::
+::::
+
+:::: {.columns}
+
+::: {.column width=33%}
+**mathematical objects**
+
+- equations
+- parameters
+- code
+:::
+
+::: {.column width=33%}
+**spatial objects**
+
+- coordinates
+- maps
+- sensor locations
+:::
+
+::: {.column width=33%}
+**temporal objects**
+
+- time series
+- stimulus patterns
+:::
+
+::::
