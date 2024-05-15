@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.554">
+
+  <meta name="author" content="Leon Martin">
+  <meta name="dcterms.date" content="2024-05-15">
+  <title>Data Processing for Building Digital Brain Twins with The Virtual Brain</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <meta name="mermaid-theme" content="neutral">
+  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <link rel="shortcut icon" href="images/logo.svg">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="images/Tractography_animated_lateral_view.gif" data-background-opacity="0.3" data-background-size="cover" class="quarto-title-block center">
+  <h1 class="title">Data Processing for Building Digital Brain Twins with The Virtual Brain</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Leon Martin 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:leon.martin@bih-charite.de">leon.martin@bih-charite.de</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Berlin Institute of Health at Charité University Medicine Berlin
+          </p>
+    </div>
+</div>
+
+  <p class="date">2024-05-15</p>
+</section>
+<section id="table-of-contents" class="slide level2">
+<h2>Table of Contents</h2>
+<ul>
+<li>Challenges of Brain Imaging</li>
+<li>MRI Basics</li>
+<li>Impact of Analysis/Processing Pipelines</li>
+<li>Modeling Brain Network Dynamics</li>
+</ul>
+<!-- Introduction -->
+</section>
+<section id="main-challenges" class="slide level2">
+<h2>Main Challenges</h2>
+<div class="columns">
+<div class="column r-fit-text smaller" style="width:50%;">
+<p><strong>Goal of neuroimaging</strong>: Elucidate brain function in relation to its multiple layers of organization that operate at different spatial and temporal scales</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Challenging integration across spatiotemporal scales <span class="citation" data-cites="Akil2011">(<a href="#/references" role="doc-biblioref" onclick="">Akil, Martone, and Van Essen 2011</a>)</span></li>
+<li>Limited reproducibility of imaging studies <span class="citation" data-cites="BotvinikNezer2020">(<a href="#/references" role="doc-biblioref" onclick="">Botvinik-Nezer et al. 2020</a>)</span></li>
+<li>Reproducible brain imaging studies require huge sample sizes <span class="citation" data-cites="Marek2022">(<a href="#/references" role="doc-biblioref" onclick="">Marek et al. 2022</a>)</span></li>
+</ol>
+</div>
+</div>
+</div>
+<p>↳ Brain network models help understanding multi-scale brain dynamics by integrating individual <strong>structural</strong> and <strong>functional</strong> data with neural population models <span class="citation" data-cites="Schirner2018">(<a href="#/references" role="doc-biblioref" onclick="">Schirner et al. 2018</a>)</span>.</p>
+</div><div class="column" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.6em;">
+<p><img data-src="https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig1-v2.tif/full/1500,/0/default.jpg"> <img data-src="https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig2-v2.tif/full/1500,/0/default.jpg"></p>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Schirner2018">(<a href="#/references" role="doc-biblioref" onclick="">Schirner et al. 2018</a>)</span></p>
+</div>
+<aside class="notes">
+<ul>
+<li><strong>Figure1</strong>
+<ul>
+<li>Construction: Derived from diffusion-weighted MRI tractography and anatomical MRI region parcellations.</li>
+<li>Node Injection: Nodes receive subject-specific EEG source activity time series instead of noise.</li>
+<li>fMRI Prediction: Predicted fMRI time series are matched to each subject’s empirical fMRI data, acquired simultaneously with EEG.</li>
+<li>Network Structure:
+<ul>
+<li>Local Networks: Comprise excitatory (E) and inhibitory (I) neural population models driven by EEG source activity (red arrows).</li>
+<li>Global Coupling: Nodes are connected by structural connectomes (green arrows), representing white matter coupling strengths.</li>
+</ul></li>
+<li>Analysis:
+<ul>
+<li>Synaptic Input Currents (Equations 1 and 2)</li>
+<li>Firing Rates (Equations 3 and 4)</li>
+<li>Synaptic Activity (Equations 5 and 6)</li>
+</ul></li>
+<li>Purpose: To relate neural population activity and network interactions to observable neuroimaging signals.</li>
+<li>Visualization: See Video 1 for a brain network model construction and simulation results.</li>
+</ul></li>
+<li><strong>Figure2</strong>
+<ol type="a">
+<li>Neuron firing decreases during peaks of α-waves and increases during troughs (Haegens et al., 2011).</li>
+<li>Simulations show an inverse relationship between neuron firing and α-phase due to neural excitation and inhibition balance (Atallah and Scanziani, 2009).</li>
+<li>On a longer timescale (&lt;0.25 Hz), firing rates oscillate inversely to α-band power (Haegens et al., 2011).</li>
+<li>Model simulations link α-band power oscillations to fMRI oscillations, predicting resting-state fMRI time series and spatial patterns (de Munck et al., 2008).</li>
+<li>Scale-free fMRI power spectra emerge from long-range network input (He, 2011).</li>
+<li>Functional connectivity matrices were predicted over varying time windows (Allen et al., 2014).</li>
+</ol></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-physics-overview" class="slide level2">
+<h2>MR-Physics Overview</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides/Theory/MR_Physics/Overview.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="columns">
+<div class="column r-fit-text" style="width:75%;">
+<p><strong>Larmor Equation:</strong> <span class="math display">\[ \omega = \gamma B_0 \]</span></p>
+<ul>
+<li><span class="math inline">\(\omega\)</span>: Larmor precession frequency</li>
+<li><span class="math inline">\(\gamma\)</span>: gyromagnetic ratio (<span class="math inline">\(\gamma_p ≈ 42.577 \text{ MHz/T}\)</span> For protons of a hydrogen nucleus)</li>
+<li><span class="math inline">\(B_0\)</span>: External magnetic field strength</li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="r-stack">
+<p><img data-src="slides/Theory/MR_Physics/B0-Field/ProtonSpin.png" class="fragment" width="450"></p>
+<p><img data-src="slides/Theory/MR_Physics/B0-Field/Magnet.png" class="fragment" width="450"></p>
+<p><img data-src="slides/Theory/MR_Physics/B0-Field/ProtonsAlign.png" class="fragment" width="450"></p>
+<p><img data-src="slides/Theory/MR_Physics/B0-Field/Precession.png" class="fragment" width="450"></p>
+</div>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Schild1992">(<a href="#/references" role="doc-biblioref" onclick="">Schild 1992</a>)</span></p>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<!-- MR Basics -->
+<p><img data-src="slides/Theory/FallSchool21%20-%20MRbasics_LM.gif"></p>
+</section>
+<section id="analytical-variability-in-fmri-data-interpretation" class="slide level2">
+<h2>Analytical Variability in fMRI Data Interpretation</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="rows">
+<div class="row">
+<ul>
+<li>70 independent teams analized the same fMRI dataset.</li>
+<li>Every team chose a unique workflow to analyze the data.</li>
+<li>Choice of analysis pipeline had substantial effects on scientific results conclusions</li>
+</ul>
+</div>
+<div class="row">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://media.nature.com/lw767/magazine-assets/d41586-020-01282-z/d41586-020-01282-z_17986592.png?as=webp" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-020-2314-9/MediaObjects/41586_2020_2314_Fig2_HTML.png?as=webp"></p>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="BotvinikNezer2020 Lindquist2020">(<a href="#/references" role="doc-biblioref" onclick="">Botvinik-Nezer et al. 2020</a>; <a href="#/references" role="doc-biblioref" onclick="">Lindquist 2020</a>)</span></p>
+</div>
+<aside class="notes">
+<ul>
+<li><strong>Need for validation and sharing of complex image processing workflows!!</strong></li>
+</ul>
+<p><em>Figure2</em>: Investigates statistical variability across 64 different research teams.</p>
+<p><strong>Part A:</strong></p>
+<ul>
+<li>Spearman correlations calculated between team’s whole-brain maps.</li>
+<li>Maps clustered based on similarity (Ward clustering on Euclidean distances). Color coding:</li>
+<li>Row colors indicate cluster membership (Purple for Cluster 1, Blue for Cluster 2, Grey for Cluster 3).</li>
+<li>Column colors represent hypothesis decisions (Green for “yes”, Red for “no”).</li>
+</ul>
+<p><strong>Part B:</strong></p>
+<ul>
+<li>Shows average statistical maps for each cluster, thresholded at uncorrected z &gt; 2.0.</li>
+<li>Displays probability of reporting a positive outcome (P_yes) for each cluster.</li>
+<li>Notes: Maps for Hypothesis 1 and 3 are identical, only differing in the brain regions analyzed.</li>
+</ul>
+<p><strong>Key Takeaway:</strong></p>
+<ul>
+<li>Highlights significant variability in data interpretation among different research teams.</li>
+<li>Emphasizes the need for standardized methods in neuroimaging analysis.</li>
+<li></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="network-concepts-and-terminology" class="slide level2">
+<h2>Network concepts and terminology</h2>
+<div class="rows">
+<div class="row">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnn.3690/MediaObjects/41593_2014_Article_BFnn3690_Fig1_HTML.jpg?as=webp" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div>
+<div class="row">
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmeth.2485/MediaObjects/41592_2013_Article_BFnmeth2485_Fig1_HTML.jpg?as=webp" class="quarto-figure quarto-figure-center" width="250" height="200"></p>
+</figure>
+</div>
+</div><div class="column" style="width:75%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-47860-x/MediaObjects/41467_2024_47860_Fig1_HTML.png?as=webp" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Sporns2014 Sporns2013 Koller2024">(<a href="#/references" role="doc-biblioref" onclick="">Sporns 2014</a>, <a href="#/references" role="doc-biblioref" onclick="">2013</a>; <a href="#/references" role="doc-biblioref" onclick="">Koller, Schirner, and Ritter 2024</a>)</span></p>
+</div>
+<aside class="notes">
+<ul>
+<li><strong>Connection Matrix (a)</strong>:
+<ul>
+<li>Summarizes binary pairwise relations among 20 nodes.</li>
+<li>Black indicates presence, white indicates absence of a symmetric connection.</li>
+</ul></li>
+<li><strong>Reordered Matrix (b)</strong>:
+<ul>
+<li>Nodes reordered for optimal modularity partition.</li>
+<li>Displays three network modules (red, green, blue).</li>
+</ul></li>
+<li><strong>Spring-Embedded 2D Network Diagram (c)</strong>:
+<ul>
+<li>Visual representation of the network from (a) and (b).</li>
+<li>Nodes colored by module assignments.</li>
+<li>Highlighted nodes based on various network measures:
+<ul>
+<li><strong>Node 1</strong>:
+<ul>
+<li>High degree (many connections).</li>
+<li>High betweenness centrality (on many short paths).</li>
+<li>High participation coefficient (broadly distributed connections across modules).</li>
+<li>Low clustering (neighbors are not mutually connected).</li>
+</ul></li>
+<li><strong>Node 15</strong>: High clustering.</li>
+<li><strong>Node 8</strong>: Low betweenness.</li>
+<li><strong>Node 14</strong>: Low degree.</li>
+<li><strong>Node 7</strong>: Low participation coefficient.</li>
+</ul></li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="simulating-whole-brain-dynamics" class="slide level2">
+<h2>Simulating Whole-Brain Dynamics</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Multimodal data integration</li>
+<li>Models simulating local neural activity are coupled based on a whole-brain network</li>
+<li>Empirical data features can be used for parameter optimization and model fitting</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="https://ars.els-cdn.com/content/image/1-s2.0-S0960982218310455-gr1_lrg.jpg" class="quarto-figure quarto-figure-right" width="900"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Deco2018">(<a href="#/references" role="doc-biblioref" onclick="">Deco et al. 2018</a>)</span></p>
+</div>
+</section>
+<section id="building-blocks-of-a-brain-network-model" class="slide level2">
+<h2>Building Blocks of a Brain Network Model</h2>
+<p><img data-src="slides/Theory/BrainNetworks/BNM_Framework.svg"></p>
+<div class="citations">
+<p><span class="citation" data-cites="Martin2024">(<a href="#/references" role="doc-biblioref" onclick="">Martin et al. 2024</a>)</span></p>
+</div>
+</section>
+<section id="empirical-data-features" class="slide level2">
+<h2>Empirical data features</h2>
+<h3 id="mri">MRI</h3>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div id="cell-fig-connectomes" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-connectomes" class="quarto-figure quarto-figure-center quarto-float">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-connectomes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/fig-connectomes-output-1.png" width="758" height="470">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-connectomes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Average parcellated structural and functional connectomes (84 Areas)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column r-fit-text smaller" style="width:30%;">
+<p><img data-src="images/DesikanKillianySurface.svg" width="200"></p>
+<ul>
+<li>Structural connectivity (SC): <strong>Anatomical connections</strong></li>
+<li>Functional connectivity (FC): <strong>Statistical dependencies</strong></li>
+</ul>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Fischl2002 Desikan2006">(<a href="#/references" role="doc-biblioref" onclick="">Fischl et al. 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Desikan et al. 2006</a>)</span></p>
+</div>
+<aside class="notes">
+<p><strong>Connectome</strong>: Weighted Graph with nodes as brain areas and edges characterizing the</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="empirical-data-features-1" class="slide level2">
+<h2>Empirical data features</h2>
+<h3 id="eeg">EEG</h3>
+<p><img data-src="images/Zorzos2021_Fig1.webp"></p>
+<ul>
+<li>Empirical: Data is projected to source space to fit model</li>
+<li>Simulated: Forward-modelling via leadfield matrix</li>
+</ul>
+<div class="citations">
+<p><span class="citation" data-cites="Zorzos2021">(<a href="#/references" role="doc-biblioref" onclick="">Zorzos et al. 2021</a>)</span></p>
+</div>
+<!-- Methods -->
+</section>
+<section id="mri-processing-pipeline" class="slide level2">
+<h2>MRI Processing Pipeline</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Pipeline.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Schirner2015 Glasser2013">(<a href="#/references" role="doc-biblioref" onclick="">Schirner et al. 2015</a>; <a href="#/references" role="doc-biblioref" onclick="">Glasser et al. 2013</a>)</span></p>
+</div>
+<aside class="notes">
+<ul>
+<li>T1w and T2w images are processed through the same steps in parallel up until cross-modal registration.</li>
+<li>A field map is used to remove readout distortion in the T1w and T2w images, which slightly improves their alignment and the resulting myelin maps.</li>
+<li>Bias Field Correction: <span class="math inline">\(\sqrt{T1w * T2w}\)</span></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="structural-processing" class="slide level2">
+<h2>Structural Processing</h2>
+<h3 id="minimal-preprocessing-with-hcp-pipelines">Minimal Preprocessing with HCP Pipelines</h3>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature18933/MediaObjects/41586_2016_Article_BFnature18933_Fig3_HTML.jpg?as=webp" height="500"></p>
+</div><div class="column" style="width:30%;">
+<p><img data-src="slides/Methods/MinimalPreprocessing/Glasser2013_Cifti.jpeg" height="500"></p>
+</div>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="Glasser2013 Glasser2016">(<a href="#/references" role="doc-biblioref" onclick="">Glasser et al. 2013</a>, <a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p>
+</div>
+</section>
+<section id="local-and-global-connectivity" class="slide level2">
+<h2>Local and Global Connectivity</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Global_Local_Connectivity.svg" class="quarto-figure quarto-figure-center" width="700"></p>
+</figure>
+</div>
+<div class="citations">
+<p><span class="citation" data-cites="SanzLeon2015">(<a href="#/references" role="doc-biblioref" onclick="">Sanz-Leon et al. 2015</a>)</span></p>
+</div>
+<aside class="notes">
+<p><strong>Spatial Scales of Structural Connectivity</strong></p>
+<ul>
+<li><strong>Human Cortex Representation</strong>
+<ul>
+<li>Depicted as a triangular mesh (lower panel).</li>
+</ul></li>
+<li><strong>Local Connections</strong>
+<ul>
+<li>Represented with a kernel function, <span class="math inline">\(W_{\xi}(z)\)</span>, of the exponential family.</li>
+<li>Associated with intracortical fibers.</li>
+</ul></li>
+<li><strong>Anatomical Parcellation</strong>
+<ul>
+<li>Cortex divided into a finite number of patches (upper right).</li>
+</ul></li>
+<li><strong>Connectome</strong>
+<ul>
+<li>Connections between parcels represented as Uv = 2.</li>
+</ul></li>
+<li><strong>Time-Delays</strong>
+<ul>
+<li>Introduced via long-range connections {<span class="math inline">\(u_{jk}\)</span>, <span class="math inline">\(\tau_{jk}\)</span>}.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Workflows -->
+</section>
+<section id="scaleable-workflows-with-snakemake" class="slide level2">
+<h2>Scaleable workflows with Snakemake</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://snakemake.readthedocs.io/en/stable/_static/logo-snake.svg" class="quarto-figure quarto-figure-center" style="margin-bottom:0px"></p>
+</figure>
+</div>
+<ul>
+<li><strong>Workflow management</strong> system for creating reproducible and scalable data analysis pipelines.</li>
+<li><strong>Python</strong>-based</li>
+<li>Interoperable with hcp cluster or cloud computing <strong>and</strong> local execution.</li>
+<li>Flexible and efficient <strong>job scheduling</strong></li>
+<li>Supports <strong>containerized workflows</strong></li>
+</ul>
+</div><div class="column">
+<div class="figure">
+<p><img data-src="https://f1000research.s3.amazonaws.com/manuscripts/32078/2dd5741c-0e33-41b8-a76b-a26a36ae899c_figure1.gif"></p>
+</div>
+<div class="figure">
+<p><img data-src="https://f1000research.s3.amazonaws.com/manuscripts/32078/2dd5741c-0e33-41b8-a76b-a26a36ae899c_figure4.gif"></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ol type="a">
+<li>Example workflow DAG. The greenish area depicts the jobs that are ready for scheduling (because all input files are present) at a given time during the workflow execution. We assume that the red job at the root generates a temporary file, which may be deleted once all blue jobs are finished.</li>
+<li>Suboptimal scheduling solution: two green jobs are scheduled, such that only one blue job can be scheduled and the temporary file generated by the red job has to remain on disk until all blue jobs are finished in a subsequent scheduling step.</li>
+<li>Optimal scheduling solution: the three blue jobs are scheduled, such that the temporary file generated by the red job can be deleted afterwards.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="rule-based-modular-workflows" class="slide level2">
+<h2>Rule-based modular workflows</h2>
+<div class="columns">
+<div class="column r-fit-text smaller" style="width:50%;">
+<div style="margin-top: 20px;  margin-bottom: 0px;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rule</strong>: Set of instructions that specifies input and output files along with a shell command for transformation.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Benchmarking</strong> for resource management</li>
+<li>Option for <strong>caching</strong> between workflows</li>
+<li><strong>Reusable</strong> standardized wrappers for common tasks</li>
+</ul>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+    class Rule {
+    }
+
+    class Input {
+        +List files
+    }
+
+    class Output {
+        +List files
+    }
+
+    class Params {
+        +Dict key_values
+    }
+
+    class Threads {
+        +Int count
+    }
+
+    class Container {
+        +String name
+    }
+
+    class Shell {
+        +String command
+    }
+
+    class Log {
+        +String file
+    }
+
+    Rule --&gt; Input
+    Rule --&gt; Output
+    Rule --&gt; Params
+    Rule --&gt; Threads
+    Rule --&gt; Container
+    Rule --&gt; Shell
+    Rule --&gt; Log
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="margin-top: 20px;  margin-bottom: 0px; font-size: 0.6em;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>rule create_sc:</span>
+<span id="cb1-2"><a href=""></a>    <span class="bu">input</span>:</span>
+<span id="cb1-3"><a href=""></a>        parc<span class="op">=</span>rules.mmp_vol_to_mrtrix.output.parc,</span>
+<span id="cb1-4"><a href=""></a>        tracks<span class="op">=</span>rules.run_tractography.output.tracks,</span>
+<span id="cb1-5"><a href=""></a>        sift_weights<span class="op">=</span>rules.run_sift.output.sift_weights,</span>
+<span id="cb1-6"><a href=""></a>    output:</span>
+<span id="cb1-7"><a href=""></a>        weights<span class="op">=</span>join(MRTrix_out,</span>
+<span id="cb1-8"><a href=""></a>                    <span class="st">"sub-</span><span class="sc">{subid}</span><span class="st">_parc-mmp1_sc_weights.csv"</span>),</span>
+<span id="cb1-9"><a href=""></a>        lengths<span class="op">=</span>join(MRTrix_out,</span>
+<span id="cb1-10"><a href=""></a>                    <span class="st">"sub-</span><span class="sc">{subid}</span><span class="st">_parc-mmp1_sc_lengths.csv"</span>),</span>
+<span id="cb1-11"><a href=""></a>        assignments<span class="op">=</span>join(MRTrix_out,</span>
+<span id="cb1-12"><a href=""></a>                        <span class="st">"assignments.txt"</span>),</span>
+<span id="cb1-13"><a href=""></a>    threads: config[<span class="st">"nthreads"</span>]</span>
+<span id="cb1-14"><a href=""></a>    container:</span>
+<span id="cb1-15"><a href=""></a>        config[<span class="st">"containers"</span>][<span class="st">"mrtrix"</span>]</span>
+<span id="cb1-16"><a href=""></a>    shell:</span>
+<span id="cb1-17"><a href=""></a>        <span class="co">"""</span></span>
+<span id="cb1-18"><a href=""></a><span class="co">        tck2connectome {input.tracks} {input.parc} {output.weights} </span><span class="ch">\</span></span>
+<span id="cb1-19"><a href=""></a><span class="co">            -tck_weights_in {input.sift_weights} </span><span class="ch">\</span></span>
+<span id="cb1-20"><a href=""></a><span class="co">            -out_assignments {output.assignments} </span><span class="ch">\</span></span>
+<span id="cb1-21"><a href=""></a><span class="co">            -symmetric -zero_diagonal -nthreads {threads}</span></span>
+<span id="cb1-22"><a href=""></a></span>
+<span id="cb1-23"><a href=""></a><span class="co">        tck2connectome {input.tracks} {input.parc} {output.lengths} </span><span class="ch">\</span></span>
+<span id="cb1-24"><a href=""></a><span class="co">            -tck_weights_in {input.sift_weights} </span><span class="ch">\</span></span>
+<span id="cb1-25"><a href=""></a><span class="co">            -symmetric -zero_diagonal -scale_length -stat_edge mean </span><span class="ch">\</span></span>
+<span id="cb1-26"><a href=""></a><span class="co">            -nthreads {threads}</span></span>
+<span id="cb1-27"><a href=""></a><span class="co">        echo $(date) &gt; {output.done}</span></span>
+<span id="cb1-28"><a href=""></a><span class="co">        """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<!--
+
+:::
+:::
+
+:::{.column width=60%}
+
+## {auto-animate=true}
+::: {style="margin-top: 20px; font-size: 0.7em;"}
+```python
+rule create_sc:
+    input:
+        parc=rules.mmp_vol_to_mrtrix.output.parc,
+        tracks=rules.run_tractography.output.tracks,
+        sift_weights=rules.run_sift.output.sift_weights,
+    output:
+        weights=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_weights.csv"),
+        lengths=join(MRTrix_out,
+                    "sub-{subid}_parc-mmp1_sc_lengths.csv"),
+        assignments=join(MRTrix_out,
+                        "assignments.txt"),
+    threads: config["nthreads"]
+    container:
+        config["containers"]["mrtrix"]
+    shell:
+        """
+        tck2connectome {input.tracks} {input.parc} {output.weights} \
+            -tck_weights_in {input.sift_weights} \
+            -out_assignments {output.assignments} \
+            -symmetric -zero_diagonal -nthreads {threads}
+
+        tck2connectome {input.tracks} {input.parc} {output.lengths} \
+            -tck_weights_in {input.sift_weights} \
+            -symmetric -zero_diagonal -scale_length -stat_edge mean \
+            -nthreads {threads}
+        echo $(date) > {output.done}
+        """
+```
+:::
+:::
+:::: -->
+<aside class="notes">
+<ol type="1">
+<li><strong>Rule Definition</strong>:
+<ul>
+<li><strong>Input</strong>: Specifies the input files needed for the task.</li>
+<li><strong>Output</strong>: Defines the expected output files.</li>
+<li><strong>Threads</strong>: Configures the number of threads for parallel processing.</li>
+<li><strong>Container</strong>: Specifies the container to use for running the task.</li>
+<li><strong>Shell</strong>: Contains the actual commands to execute.</li>
+</ul></li>
+<li><strong>Key Features Highlighted</strong>:
+<ul>
+<li><strong>Benchmarking for Resource Allocation</strong>: Important for optimizing workflow performance.</li>
+<li><strong>Caching Between Workflows</strong>: Useful for reusing intermediate results to save computation time.</li>
+<li><strong>Standardized Wrappers</strong>: Promotes reusability and standardization of common tasks.</li>
+</ul></li>
+</ol>
+<p>This structure makes it easy for your audience to understand how Snakemake rules are constructed and the benefits of using them in workflows.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="writing-workflows" class="slide level2">
+<h2>Writing Workflows</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD;
+    A[Target Output] --&gt; R2[rule 2];
+    R2 --&gt; O1[Output 1]
+    O1 --&gt; R1[rule 1]
+    R1 --&gt; I1[data/Input 1];
+    R1 --&gt; I2[data/Input 2];
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p><strong>Top down applicatio of rules within a Snakefile</strong>:</p>
+<ul>
+<li>Application of a rule to generate a set of output fiels is called <strong>job</strong></li>
+<li>For each input file of a job, Snakemake recursively determines rules that can be applied to generate it.</li>
+<li><strong>Directed acyclic graph</strong> (DAG) of jobs
+<ul>
+<li>nodes: rules</li>
+<li>edges: dependencies</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="example-workflow" class="slide level2 scrollable">
+<h2>Example Workflow</h2>
+<h3 id="hcps-diffusion-pipeline">HCP’s Diffusion Pipeline</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides/Methods/Snakemake/dag.svg" class="quarto-figure quarto-figure-center" style="width:200.0%"></p>
+</figure>
+</div>
+</section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p>© Leon Martin 2024</p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Akil2011" class="csl-entry" role="listitem">
+Akil, Huda, Maryann E. Martone, and David C. Van Essen. 2011. <span>“Challenges and Opportunities in Mining Neuroscience Data.”</span> <em>Science</em> 331 (6018): 708–12. <a href="https://doi.org/10.1126/science.1199305">https://doi.org/10.1126/science.1199305</a>.
+</div>
+<div id="ref-BotvinikNezer2020" class="csl-entry" role="listitem">
+Botvinik-Nezer, Rotem, Felix Holzmeister, Colin F. Camerer, Anna Dreber, Juergen Huber, Magnus Johannesson, Michael Kirchler, et al. 2020. <span>“Variability in the Analysis of a Single Neuroimaging Dataset by Many Teams.”</span> <em>Nature</em> 582 (7810): 84–88. <a href="https://doi.org/10.1038/s41586-020-2314-9">https://doi.org/10.1038/s41586-020-2314-9</a>.
+</div>
+<div id="ref-Deco2018" class="csl-entry" role="listitem">
+Deco, Gustavo, Josephine Cruzat, Joana Cabral, Gitte M. Knudsen, Robin L. Carhart-Harris, Peter C. Whybrow, Nikos K. Logothetis, and Morten L. Kringelbach. 2018. <span>“Whole-Brain Multimodal Neuroimaging Model Using Serotonin Receptor Maps Explains Non-Linear Functional Effects of LSD.”</span> <em>Current Biology</em> 28 (19): 3065–3074.e6. <a href="https://doi.org/10.1016/j.cub.2018.07.083">https://doi.org/10.1016/j.cub.2018.07.083</a>.
+</div>
+<div id="ref-Desikan2006" class="csl-entry" role="listitem">
+Desikan, Rahul S., Florent Ségonne, Bruce Fischl, Brian T. Quinn, Bradford C. Dickerson, Deborah Blacker, Randy L. Buckner, et al. 2006. <span>“An Automated Labeling System for Subdividing the Human Cerebral Cortex on MRI Scans into Gyral Based Regions of Interest.”</span> <em>NeuroImage</em> 31 (3): 968–80. <a href="https://doi.org/10.1016/j.neuroimage.2006.01.021">https://doi.org/10.1016/j.neuroimage.2006.01.021</a>.
+</div>
+<div id="ref-Fischl2002" class="csl-entry" role="listitem">
+Fischl, Bruce, David H. Salat, Evelina Busa, Marilyn Albert, Megan Dieterich, Christian Haselgrove, Andre van der Kouwe, et al. 2002. <span>“Whole Brain Segmentation.”</span> <em>Neuron</em> 33 (3): 341–55. <a href="https://doi.org/10.1016/s0896-6273(02)00569-x">https://doi.org/10.1016/s0896-6273(02)00569-x</a>.
+</div>
+<div id="ref-Glasser2016" class="csl-entry" role="listitem">
+Glasser, Matthew F., Timothy S. Coalson, Emma C. Robinson, Carl D. Hacker, John Harwell, Essa Yacoub, Kamil Ugurbil, et al. 2016. <span>“A Multi-Modal Parcellation of Human Cerebral Cortex.”</span> <em>Nature</em> 536 (7615): 171–78. <a href="https://doi.org/10.1038/nature18933">https://doi.org/10.1038/nature18933</a>.
+</div>
+<div id="ref-Glasser2013" class="csl-entry" role="listitem">
+Glasser, Matthew F., Stamatios N. Sotiropoulos, J. Anthony Wilson, Timothy S. Coalson, Bruce Fischl, Jesper L. Andersson, Junqian Xu, et al. 2013. <span>“The Minimal Preprocessing Pipelines for the Human Connectome Project.”</span> <em>NeuroImage</em> 80 (October): 105–24. <a href="https://doi.org/10.1016/j.neuroimage.2013.04.127">https://doi.org/10.1016/j.neuroimage.2013.04.127</a>.
+</div>
+<div id="ref-Koller2024" class="csl-entry" role="listitem">
+Koller, Dominik P., Michael Schirner, and Petra Ritter. 2024. <span>“Human Connectome Topology Directs Cortical Traveling Waves and Shapes Frequency Gradients.”</span> <em>Nature Communications</em> 15 (1). <a href="https://doi.org/10.1038/s41467-024-47860-x">https://doi.org/10.1038/s41467-024-47860-x</a>.
+</div>
+<div id="ref-Lindquist2020" class="csl-entry" role="listitem">
+Lindquist, Martin. 2020. <span>“Neuroimaging Results Altered by Varying Analysis Pipelines.”</span> <em>Nature</em> 582 (7810): 36–37. <a href="https://doi.org/10.1038/d41586-020-01282-z">https://doi.org/10.1038/d41586-020-01282-z</a>.
+</div>
+<div id="ref-Marek2022" class="csl-entry" role="listitem">
+Marek, Scott, Brenden Tervo-Clemmens, Finnegan J. Calabro, David F. Montez, Benjamin P. Kay, Alexander S. Hatoum, Meghan Rose Donohue, et al. 2022. <span>“Reproducible Brain-Wide Association Studies Require Thousands of Individuals.”</span> <em>Nature</em> 603 (7902): 654–60. <a href="https://doi.org/10.1038/s41586-022-04492-9">https://doi.org/10.1038/s41586-022-04492-9</a>.
+</div>
+<div id="ref-Martin2024" class="csl-entry" role="listitem">
+Martin, L., K. Bülau, C. Hüttl, R. A. Schmitt, D. Perdikis, L. Domide, H. Taher, L. Stefanovski, and P. Ritter. 2024. <span>“Semantic Annotation of Computational Neuroscience Knowledge: The Virtual Brain Ontology for Reproducible Whole-Brain Models.”</span>
+</div>
+<div id="ref-SanzLeon2015" class="csl-entry" role="listitem">
+Sanz-Leon, Paula, Stuart A. Knock, Andreas Spiegler, and Viktor K. Jirsa. 2015. <span>“Mathematical Framework for Large-Scale Brain Network Modeling in the Virtual Brain.”</span> <em>NeuroImage</em> 111 (May): 385–430. <a href="https://doi.org/10.1016/j.neuroimage.2015.01.002">https://doi.org/10.1016/j.neuroimage.2015.01.002</a>.
+</div>
+<div id="ref-Schild1992" class="csl-entry" role="listitem">
+Schild, H. H. 1992. <em>MRI Made Easy (... Well Almost)</em>. Berlex Laboratories. <a href="https://books.google.de/books?id=mG5rAAAAMAAJ">https://books.google.de/books?id=mG5rAAAAMAAJ</a>.
+</div>
+<div id="ref-Schirner2018" class="csl-entry" role="listitem">
+Schirner, Michael, Anthony Randal McIntosh, Viktor Jirsa, Gustavo Deco, and Petra Ritter. 2018. <span>“Inferring Multi-Scale Neural Mechanisms with Brain Network Modelling.”</span> <em>eLife</em> 7 (January): e28927. <a href="https://doi.org/10.7554/elife.28927">https://doi.org/10.7554/elife.28927</a>.
+</div>
+<div id="ref-Schirner2015" class="csl-entry" role="listitem">
+Schirner, Michael, Simon Rothmeier, Viktor K. Jirsa, Anthony Randal McIntosh, and Petra Ritter. 2015. <span>“An Automated Pipeline for Constructing Personalized Virtual Brains from Multimodal Neuroimaging Data.”</span> <em>NeuroImage</em> 117 (August): 343–57. <a href="https://doi.org/10.1016/j.neuroimage.2015.03.055">https://doi.org/10.1016/j.neuroimage.2015.03.055</a>.
+</div>
+<div id="ref-Sporns2013" class="csl-entry" role="listitem">
+Sporns, Olaf. 2013. <span>“Making Sense of Brain Network Data.”</span> <em>Nature Methods</em> 10 (6): 491–93. <a href="https://doi.org/10.1038/nmeth.2485">https://doi.org/10.1038/nmeth.2485</a>.
+</div>
+<div id="ref-Sporns2014" class="csl-entry" role="listitem">
+———. 2014. <span>“Contributions and Challenges for Network Models in Cognitive Neuroscience.”</span> <em>Nature Neuroscience</em> 17 (5): 652–60. <a href="https://doi.org/10.1038/nn.3690">https://doi.org/10.1038/nn.3690</a>.
+</div>
+<div id="ref-Zorzos2021" class="csl-entry" role="listitem">
+Zorzos, Ioannis, Ioannis Kakkos, Errikos M. Ventouras, and George K. Matsopoulos. 2021. <span>“Advances in Electrical Source Imaging: A Review of the Current Approaches, Applications and Challenges.”</span> <em>Signals</em> 2 (3): 378–91. <a href="https://doi.org/10.3390/signals2030024">https://doi.org/10.3390/signals2030024</a>.
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
