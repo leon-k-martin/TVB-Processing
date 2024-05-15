@@ -1,5 +1,5 @@
-### Minimal Preprocessing with HCP Pipelines
-
+## Minimal Preprocessing with HCP Pipelines
+### A surface-based approach
 :::: {.columns}
 
 ::: {.column width=70%}

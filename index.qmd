@@ -32,15 +32,16 @@ format:
     incremental: false
     footer: "© Leon Martin 2024"
     show-notes: false
+    auto-play-media: true
 execute:
   cache: true
 ---
 
-## Table of Contents
+<!-- ## Table of Contents
 - Challenges of Brain Imaging
 - MRI Basics
 - Impact of Analysis/Processing Pipelines
-- Modeling Brain Network Dynamics
+- Modeling Brain Network Dynamics -->
 
 
 
@@ -57,7 +58,9 @@ execute:
 
 {{< include slides/Theory/BrainNetworks/ConceptsAndTerminology.qmd >}}
 
-{{< include slides/Theory/BrainNetworks/BNM.qmd >}}
+{{< include slides/Theory/BrainNetworks/BNM_Overview.qmd >}}
+{{< include slides/Theory/BrainNetworks/CurrentModelingStudies.qmd >}}
+{{< include slides/Theory/BrainNetworks/BNM_BuildingBlocks.qmd >}}
 
 ## Empirical data features
 {{< include slides/Theory/BrainNetworks/Connectomes.qmd >}}
@@ -68,8 +71,6 @@ execute:
 <!-- Methods -->
 {{< include slides/Methods/MinimalPreprocessing/Overview.qmd >}}
 
-
-## Structural Processing
 
 {{< include slides/Methods/MinimalPreprocessing/HCP.qmd >}}
 
@@ -82,5 +83,39 @@ execute:
 
 {{< include slides/Methods/Snakemake/Workflows.qmd >}}
 
+## Brain Imaging Data Structure {.r-fit-text .smaller}
+
+:::: {.columns}
+::: {.column width=80%}
+:::{.callout-tip .smaller}
+- BIDS stands for Brain Imaging Data Structure.
+- It is a standard for organizing and describing neuroimaging and electrophysiological data.
+- The goal is to enhance reproducibility, transparency, and data sharing in the neuroscience community.
+:::
+:::
+::: {.column width=20% layout="[-1], [1], [-1]"}
+![](images/BIDS_logo_black_transparent_background_crop.png){width=100%, fig-align="center"}
+:::
+::::
+
+**Key Features**
+
+- **Organized Directory Structure**: Standardizes how data files and metadata are stored.
+- **Standard Naming Conventions**: Ensures consistency across datasets.
+- **Comprehensive Metadata**: Includes detailed descriptions of the data and acquisition methods.
+
+![](images/BIDS_Name-Format.png){margin-top=0px, fig-align="center"}
+
+**Resources**: [BIDS Specification](https://bids.neuroimaging.io/), [BIDS Starter Kit](https://github.com/bids-standard/bids-starter-kit)
+
+::: {.notes}
+
+**Supported Modalities**
+- MRI (Magnetic Resonance Imaging)
+- MEG (Magnetoencephalography)
+- EEG (Electroencephalography)
+- iEEG (Intracranial Electroencephalography)
+- PET (Positron Emission Tomography)
+:::
 
 # References

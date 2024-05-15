@@ -437,14 +437,13 @@ Leon Martin
 
   <p class="date">2024-05-15</p>
 </section>
-<section id="table-of-contents" class="slide level2">
-<h2>Table of Contents</h2>
-<ul>
-<li>Challenges of Brain Imaging</li>
-<li>MRI Basics</li>
-<li>Impact of Analysis/Processing Pipelines</li>
-<li>Modeling Brain Network Dynamics</li>
-</ul>
+<section class="slide level2">
+
+<!-- ## Table of Contents
+- Challenges of Brain Imaging
+- MRI Basics
+- Impact of Analysis/Processing Pipelines
+- Modeling Brain Network Dynamics -->
 <!-- Introduction -->
 </section>
 <section id="main-challenges" class="slide level2">
@@ -712,6 +711,86 @@ Leon Martin
 <p><span class="citation" data-cites="Deco2018">(<a href="#/references" role="doc-biblioref" onclick="">Deco et al. 2018</a>)</span></p>
 </div>
 </section>
+<section id="current-modeling-studies-.nostretch-.r-resize-text-.smaller-.column-margin0px" class="slide level2">
+<h2>Current Modeling Studies {.nostretch .r-resize-text .smaller .column-margin=0px}</h2>
+<div class="quarto-layout-panel" data-margin-top="0px" data-margin-bottom="0px" data-layout="[[1,1],[1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Schirner2023_Fig2.png" style="width:75.0%" data-margin-top="0px"></p>
+<figcaption>Dynamical Brain Model of Decision Making Processes <span class="citation" data-cites="Schirner2023">(<a href="#/references" role="doc-biblioref" onclick="">Schirner, Deco, and Ritter 2023</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><video data-src="images/Koller2024_TravellingWaves.mp4" loop="true" controls=""><a href="images/Koller2024_TravellingWaves.mp4">Video</a></video></p>
+<figcaption>Network Structure Shapes Cortical Travelling Waves <span class="citation" data-cites="Koller2024">(<a href="#/references" role="doc-biblioref" onclick="">Koller, Schirner, and Ritter 2024</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.eneuro.org/content/eneuro/11/4/ENEURO.0345-23.2023/F3.large.jpg" style="width:60.0%"></p>
+<figcaption>Longitudinal Alzheimer’s Proteinopathologic Disease Progression Model <span class="citation" data-cites="CabreraAlvarez2024">(<a href="#/references" role="doc-biblioref" onclick="">Cabrera-Álvarez et al. 2024</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.medrxiv.org/content/medrxiv/early/2022/01/21/2022.01.19.22269404/F2.large.jpg" style="width:60.0%"></p>
+<figcaption>The Virtual Epileptic Patient - probabilistic brain modeling in drug-resistant epilepsy <span class="citation" data-cites="Wang2022">(<a href="#/references" role="doc-biblioref" onclick="">Wang et al. 2022</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="citations">
+
+</div>
+<aside class="notes">
+<p><strong>Schirner2023</strong> - <strong>Tuning curves for a reduced model (two nodes)</strong>: - Identical to the 379-nodes BNM. - FC (correlation) between the two nodes increased smoothly and monotonically as a function of their E/I-ratio. - The relationship between E/I-ratio and FC persisted when: - <strong>Noise strength</strong> (upper panel; Eqs. 5 and 6) was modulated. - <strong>Structural coupling strength</strong> (lower panel; Eqs. 1 and 2) was modulated. - Both parameters are fixed during the fitting of the full 379-nodes model.</p>
+<ul>
+<li><strong>Fitting results for the full 379-nodes model</strong>:
+<ul>
+<li>One exemplary FC.</li>
+<li><strong>Empirical FC</strong>: Upper triangular portion of the matrix.</li>
+<li><strong>Simulated FC</strong>: Lower triangular portion of the matrix.</li>
+<li><strong>Joint distributions</strong>:
+<ul>
+<li>Without E/I-tuning (upper panel).</li>
+<li>With E/I-tuning (lower panel).</li>
+</ul></li>
+</ul></li>
+<li><strong>Pearson correlations and RMSEs between empirical and simulated FCs</strong>:
+<ul>
+<li><strong>Three model variants</strong>:
+<ul>
+<li>EI-tuning: Tuning algorithm applied on both E and I.</li>
+<li>E-tuning: Tuning algorithm applied only on E.</li>
+<li>Original: Tuning of a scalar global coupling scaling factor to rescale.</li>
+</ul></li>
+<li>N = 650 empirical and simulated FCs.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="building-blocks-of-a-brain-network-model" class="slide level2">
 <h2>Building Blocks of a Brain Network Model</h2>
 <p><img data-src="slides/Theory/BrainNetworks/BNM_Framework.svg"></p>
@@ -804,9 +883,9 @@ Figure&nbsp;1: Average parcellated structural and functional connectomes (84 Are
           display:block!important;
       }</style></aside>
 </section>
-<section id="structural-processing" class="slide level2">
-<h2>Structural Processing</h2>
-<h3 id="minimal-preprocessing-with-hcp-pipelines">Minimal Preprocessing with HCP Pipelines</h3>
+<section id="minimal-preprocessing-with-hcp-pipelines" class="slide level2">
+<h2>Minimal Preprocessing with HCP Pipelines</h2>
+<h3 id="a-surface-based-approach">A surface-based approach</h3>
 <div class="columns">
 <div class="column" style="width:70%;">
 <p><img data-src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature18933/MediaObjects/41586_2016_Article_BFnature18933_Fig3_HTML.jpg?as=webp" height="500"></p>
@@ -1132,6 +1211,63 @@ rule create_sc:
 </figure>
 </div>
 </section>
+<section id="brain-imaging-data-structure" class="slide level2 smaller">
+<h2>Brain Imaging Data Structure</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<div class="smaller">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>BIDS stands for Brain Imaging Data Structure.</li>
+<li>It is a standard for organizing and describing neuroimaging and electrophysiological data.</li>
+<li>The goal is to enhance reproducibility, transparency, and data sharing in the neuroscience community.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/BIDS_logo_black_transparent_background_crop.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Features</strong></p>
+<ul>
+<li><strong>Organized Directory Structure</strong>: Standardizes how data files and metadata are stored.</li>
+<li><strong>Standard Naming Conventions</strong>: Ensures consistency across datasets.</li>
+<li><strong>Comprehensive Metadata</strong>: Includes detailed descriptions of the data and acquisition methods.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/BIDS_Name-Format.png" class="quarto-figure quarto-figure-center" data-margin-top="0px,"></p>
+</figure>
+</div>
+<p><strong>Resources</strong>: <a href="https://bids.neuroimaging.io/">BIDS Specification</a>, <a href="https://github.com/bids-standard/bids-starter-kit">BIDS Starter Kit</a></p>
+<aside class="notes">
+<p><strong>Supported Modalities</strong> - MRI (Magnetic Resonance Imaging) - MEG (Magnetoencephalography) - EEG (Electroencephalography) - iEEG (Intracranial Electroencephalography) - PET (Positron Emission Tomography)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 <div class="quarto-auto-generated-content">
@@ -1145,6 +1281,9 @@ Akil, Huda, Maryann E. Martone, and David C. Van Essen. 2011. <span>“Challenge
 </div>
 <div id="ref-BotvinikNezer2020" class="csl-entry" role="listitem">
 Botvinik-Nezer, Rotem, Felix Holzmeister, Colin F. Camerer, Anna Dreber, Juergen Huber, Magnus Johannesson, Michael Kirchler, et al. 2020. <span>“Variability in the Analysis of a Single Neuroimaging Dataset by Many Teams.”</span> <em>Nature</em> 582 (7810): 84–88. <a href="https://doi.org/10.1038/s41586-020-2314-9">https://doi.org/10.1038/s41586-020-2314-9</a>.
+</div>
+<div id="ref-CabreraAlvarez2024" class="csl-entry" role="listitem">
+Cabrera-Álvarez, Jesús, Leon Stefanovski, Leon Martin, Gianluca Susi, Fernando Maestú, and Petra Ritter. 2024. <span>“A Multiscale Closed-Loop Neurotoxicity Model of Alzheimer’s Disease Progression Explains Functional Connectivity Alterations.”</span> <em>Eneuro</em> 11 (4): ENEURO.0345–23.2023. <a href="https://doi.org/10.1523/eneuro.0345-23.2023">https://doi.org/10.1523/eneuro.0345-23.2023</a>.
 </div>
 <div id="ref-Deco2018" class="csl-entry" role="listitem">
 Deco, Gustavo, Josephine Cruzat, Joana Cabral, Gitte M. Knudsen, Robin L. Carhart-Harris, Peter C. Whybrow, Nikos K. Logothetis, and Morten L. Kringelbach. 2018. <span>“Whole-Brain Multimodal Neuroimaging Model Using Serotonin Receptor Maps Explains Non-Linear Functional Effects of LSD.”</span> <em>Current Biology</em> 28 (19): 3065–3074.e6. <a href="https://doi.org/10.1016/j.cub.2018.07.083">https://doi.org/10.1016/j.cub.2018.07.083</a>.
@@ -1179,6 +1318,9 @@ Sanz-Leon, Paula, Stuart A. Knock, Andreas Spiegler, and Viktor K. Jirsa. 2015. 
 <div id="ref-Schild1992" class="csl-entry" role="listitem">
 Schild, H. H. 1992. <em>MRI Made Easy (... Well Almost)</em>. Berlex Laboratories. <a href="https://books.google.de/books?id=mG5rAAAAMAAJ">https://books.google.de/books?id=mG5rAAAAMAAJ</a>.
 </div>
+<div id="ref-Schirner2023" class="csl-entry" role="listitem">
+Schirner, Michael, Gustavo Deco, and Petra Ritter. 2023. <span>“Learning How Network Structure Shapes Decision-Making for Bio-Inspired Computing.”</span> <em>Nature Communications</em> 14 (1). <a href="https://doi.org/10.1038/s41467-023-38626-y">https://doi.org/10.1038/s41467-023-38626-y</a>.
+</div>
 <div id="ref-Schirner2018" class="csl-entry" role="listitem">
 Schirner, Michael, Anthony Randal McIntosh, Viktor Jirsa, Gustavo Deco, and Petra Ritter. 2018. <span>“Inferring Multi-Scale Neural Mechanisms with Brain Network Modelling.”</span> <em>eLife</em> 7 (January): e28927. <a href="https://doi.org/10.7554/elife.28927">https://doi.org/10.7554/elife.28927</a>.
 </div>
@@ -1190,6 +1332,9 @@ Sporns, Olaf. 2013. <span>“Making Sense of Brain Network Data.”</span> <em>N
 </div>
 <div id="ref-Sporns2014" class="csl-entry" role="listitem">
 ———. 2014. <span>“Contributions and Challenges for Network Models in Cognitive Neuroscience.”</span> <em>Nature Neuroscience</em> 17 (5): 652–60. <a href="https://doi.org/10.1038/nn.3690">https://doi.org/10.1038/nn.3690</a>.
+</div>
+<div id="ref-Wang2022" class="csl-entry" role="listitem">
+Wang, Huifang E, Marmaduke Woodman, Paul Triebkorn, Jean-Didier Lemarechal, Jayant Jha, Borana Dollomaja, Anirudh Nihalani Vattikonda, et al. 2022. <span>“Virtual Epileptic Patient (VEP): Data-Driven Probabilistic Personalized Brain Modeling in Drug-Resistant Epilepsy.”</span> <em>medRxiv</em>, January, 2022–01. <a href="https://doi.org/10.1101/2022.01.19.22269404">https://doi.org/10.1101/2022.01.19.22269404</a>.
 </div>
 <div id="ref-Zorzos2021" class="csl-entry" role="listitem">
 Zorzos, Ioannis, Ioannis Kakkos, Errikos M. Ventouras, and George K. Matsopoulos. 2021. <span>“Advances in Electrical Source Imaging: A Review of the Current Approaches, Applications and Challenges.”</span> <em>Signals</em> 2 (3): 378–91. <a href="https://doi.org/10.3390/signals2030024">https://doi.org/10.3390/signals2030024</a>.
@@ -1317,7 +1462,7 @@ Zorzos, Ioannis, Ioannis Kakkos, Errikos M. Ventouras, and George K. Matsopoulos
         showNotes: false,
 
         // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
+        autoPlayMedia: true,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
         preloadIframes: null,

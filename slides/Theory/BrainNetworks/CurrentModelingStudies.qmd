@@ -1,0 +1,42 @@
+## Current Modeling Studies {.nostretch .r-resize-text .smaller .column-margin=0px}
+::: {layout="[[1,1],[1,1]]" margin-top=0px margin-bottom=0px}
+![Dynamical Brain Model of Decision Making Processes [@Schirner2023]](images/Schirner2023_Fig2.png){width=75% fig-align="center" margin-top=0px}
+
+![Network Structure Shapes Cortical Travelling Waves [@Koller2024]](images/Koller2024_TravellingWaves.mp4){loop="true" fig-align="center"}
+
+![Longitudinal Alzheimer's Proteinopathologic Disease Progression Model [@CabreraAlvarez2024]](https://www.eneuro.org/content/eneuro/11/4/ENEURO.0345-23.2023/F3.large.jpg){width=60% fig-align="center"}
+
+![The Virtual Epileptic Patient - probabilistic brain modeling in drug-resistant epilepsy [@Wang2022]](https://www.medrxiv.org/content/medrxiv/early/2022/01/21/2022.01.19.22269404/F2.large.jpg){width=60% fig-align="center"}
+:::
+
+::: {.citations}
+
+:::
+
+::: {.notes}
+
+**Schirner2023**
+- **Tuning curves for a reduced model (two nodes)**:
+  - Identical to the 379-nodes BNM.
+  - FC (correlation) between the two nodes increased smoothly and monotonically as a function of their E/I-ratio.
+  - The relationship between E/I-ratio and FC persisted when:
+    - **Noise strength** (upper panel; Eqs. 5 and 6) was modulated.
+    - **Structural coupling strength** (lower panel; Eqs. 1 and 2) was modulated.
+  - Both parameters are fixed during the fitting of the full 379-nodes model.
+
+- **Fitting results for the full 379-nodes model**:
+  - One exemplary FC.
+  - **Empirical FC**: Upper triangular portion of the matrix.
+  - **Simulated FC**: Lower triangular portion of the matrix.
+  - **Joint distributions**:
+    - Without E/I-tuning (upper panel).
+    - With E/I-tuning (lower panel).
+
+- **Pearson correlations and RMSEs between empirical and simulated FCs**:
+  - **Three model variants**:
+    - EI-tuning: Tuning algorithm applied on both E and I.
+    - E-tuning: Tuning algorithm applied only on E.
+    - Original: Tuning of a scalar global coupling scaling factor to rescale.
+  - N = 650 empirical and simulated FCs.
+
+:::

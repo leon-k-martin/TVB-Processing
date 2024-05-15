@@ -17,9 +17,3 @@
 :::
 
 
-## Building Blocks of a Brain Network Model
-![](slides/Theory/BrainNetworks/BNM_Framework.svg)
-
-::: {.citations}
-[@Martin2024]
-:::
