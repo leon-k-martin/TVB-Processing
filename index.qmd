@@ -37,15 +37,6 @@ execute:
   cache: true
 ---
 
-<!-- ## Table of Contents
-- Challenges of Brain Imaging
-- MRI Basics
-- Impact of Analysis/Processing Pipelines
-- Modeling Brain Network Dynamics -->
-
-
-
-<!-- Introduction -->
 {{< include slides/Theory/BrainNetworks/ChallangesBrainModeling.qmd >}}
 
 {{< include slides/Theory/MR_Physics/Overview.qmd >}}
@@ -83,39 +74,6 @@ execute:
 
 {{< include slides/Methods/Snakemake/Workflows.qmd >}}
 
-## Brain Imaging Data Structure {.r-fit-text .smaller}
-
-:::: {.columns}
-::: {.column width=80%}
-:::{.callout-tip .smaller}
-- BIDS stands for Brain Imaging Data Structure.
-- It is a standard for organizing and describing neuroimaging and electrophysiological data.
-- The goal is to enhance reproducibility, transparency, and data sharing in the neuroscience community.
-:::
-:::
-::: {.column width=20% layout="[-1], [1], [-1]"}
-![](images/BIDS_logo_black_transparent_background_crop.png){width=100%, fig-align="center"}
-:::
-::::
-
-**Key Features**
-
-- **Organized Directory Structure**: Standardizes how data files and metadata are stored.
-- **Standard Naming Conventions**: Ensures consistency across datasets.
-- **Comprehensive Metadata**: Includes detailed descriptions of the data and acquisition methods.
-
-![](images/BIDS_Name-Format.png){margin-top=0px, fig-align="center"}
-
-**Resources**: [BIDS Specification](https://bids.neuroimaging.io/), [BIDS Starter Kit](https://github.com/bids-standard/bids-starter-kit)
-
-::: {.notes}
-
-**Supported Modalities**
-- MRI (Magnetic Resonance Imaging)
-- MEG (Magnetoencephalography)
-- EEG (Electroencephalography)
-- iEEG (Intracranial Electroencephalography)
-- PET (Positron Emission Tomography)
-:::
+{{< include slides/Methods/BIDS.qmd >}}
 
 # References
