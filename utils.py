@@ -7,8 +7,8 @@ import pandas as pd
 
 fc = loadmat("data/Connectomes/avgFC_DK.mat")["avgFC"]
 
-sc = loadmat("data/Connectomes/avgSC_DK.mat")["SC_avg_weights"]
-
+sc = weights = loadmat("data/Connectomes/avgSC_DK.mat")["SC_avg_weights"]
+lengths = loadmat("data/Connectomes/avgSC_DK.mat")["SC_avg_dists"]
 
 df_info = pd.read_csv(
     "data/Connectomes/fs_default.txt",
@@ -19,9 +19,9 @@ df_info = pd.read_csv(
 )
 
 df_info = df_info.drop_duplicates(subset="Index")[1:]
-
-fc = pd.DataFrame(fc, index=df_info["Region"], columns=df_info["Region"])
-sc = pd.DataFrame(sc, index=df_info["Region"], columns=df_info["Region"])
+region_labels = df_info["Region"]
+fc = pd.DataFrame(fc, index=region_labels, columns=region_labels)
+sc = pd.DataFrame(sc, index=region_labels, columns=region_labels)
 
 
 def matrix2graph(fc, percentile=60):
@@ -29,7 +29,7 @@ def matrix2graph(fc, percentile=60):
     G = nx.from_pandas_adjacency(fc_thresh)
     isolated_nodes = list(nx.isolates(G))
     G.remove_nodes_from(isolated_nodes)
-    node_colors = df_info[df_info["Region"].isin(G.nodes)][["R", "G", "B"]].values / 255
+    node_colors = df_info[region_labels.isin(G.nodes)][["R", "G", "B"]].values / 255
     node_colors = {node: color for node, color in zip(G.nodes, node_colors)}
     node_shapes = {node: "o" if node.startswith("L") else "s" for node in G.nodes}
     return G, node_colors, node_shapes
