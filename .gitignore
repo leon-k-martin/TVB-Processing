@@ -7,5 +7,3 @@ images/.DS_Store
 __pycache__
 animation
 .jupyter_cache
-index_files
-index.html
