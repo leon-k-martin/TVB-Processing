@@ -1,7 +1,7 @@
 ## Main Challenges
 
 :::: {.columns}
-:::{.column width=50% style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.8em;"}
+:::{.column style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.8em;"}
 
 **Goal of neuroimaging**: Elucidate brain function in relation to its multiple layers of organization that operate at different spatial and temporal scales
 
@@ -13,7 +13,7 @@
 
 ↳ Brain network models help understanding multi-scale brain dynamics by integrating individual **structural** and **functional** data with neural population models [@Schirner2018].
 :::
-:::{.column width=50% layout="[[-1],[1],[-1]]" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.6em;"}
+:::{.column layout="[[-1],[1],[-1]]" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.6em;"}
 ![](https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig1-v2.tif/full/1500,/0/default.jpg)
 ![](https://iiif.elifesciences.org/lax/28927%2Felife-28927-fig2-v2.tif/full/1500,/0/default.jpg)
 :::
