@@ -1,0 +1,9 @@
+### EEG
+![](images/Zorzos2021_Fig1.webp)
+
+- Empirical: Data is projected to source space to fit model
+- Simulated: Forward-modelling via leadfield matrix
+
+::: {.citations}
+[@Zorzos2021]
+:::

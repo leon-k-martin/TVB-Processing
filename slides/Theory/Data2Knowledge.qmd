@@ -1,0 +1,2 @@
+## From data to knowledge
+![](images/Data-Knowledge-Arrow.svg){width="auto" height="200"}

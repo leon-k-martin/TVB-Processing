@@ -1,4 +1,7 @@
+### MRI
 
+:::: {.columns}
+::: {.column width=80%}
 ```{python}
 # | label: fig-connectomes
 # | fig-cap: "Average structural and functional connectomes"
@@ -6,7 +9,7 @@ import utils
 import matplotlib.pyplot as plt
 import networkx as nx
 
-fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(10, 5), layout="tight")
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(8, 5), layout="tight")
 
 ax[0, 0].imshow(utils.sc, interpolation="None", cmap="magma")
 ax[0, 1].imshow(utils.fc, interpolation="None", cmap="magma")
@@ -24,3 +27,9 @@ for i, matrix in enumerate([utils.sc, utils.fc]):
 
 plt.show()
 ```
+:::
+
+::: {.column width=20% layout="[[-1], [1], [-1]]"}
+![](images/DesikanKillianySurface.svg)
+:::
+::::

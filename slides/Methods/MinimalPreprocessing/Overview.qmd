@@ -1,4 +1,5 @@
-## Processing Pipeline
+## MRI Processing Pipeline
+
 :::: {.columns}
 :::{.column}
 <div height=100px>
@@ -34,3 +35,8 @@
 ![](https://ars.els-cdn.com/content/image/1-s2.0-S1053811915002505-gr1.jpg)
 :::
 ::::
+
+
+::: {.citations}
+[@Schirner2015]
+:::

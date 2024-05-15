@@ -1,4 +1,4 @@
-## Minimal Preprocessing with HCP Pipelines
+### Minimal Preprocessing with HCP Pipelines
 
 :::: {.columns}
 

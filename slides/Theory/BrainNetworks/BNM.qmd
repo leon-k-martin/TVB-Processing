@@ -1,4 +1,27 @@
+## Simulating Whole-Brain Dynamics
+:::: {.columns}
+
+::: {.column width=40%}
+- Multimodal data integration
+- Models simulating local neural activity are coupled based on a whole-brain network
+- Empirical data features can be used for parameter optimization and model fitting
+:::
+
+::: {.column width=60%}
+![](https://ars.els-cdn.com/content/image/1-s2.0-S0960982218310455-gr1_lrg.jpg){width=900px fig-align="right"}
+:::
+::::
+
+::: {.citations}
+[@Deco2018]
+:::
+
+
 ## Building Blocks of a Brain Network Model
 ::: {#fig-bnm-framework}
 ![](slides/Theory/BrainNetworks/BNM_Framework.svg)
+:::
+
+::: {.citations}
+[@Martin2024]
 :::
