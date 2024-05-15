@@ -33,6 +33,7 @@ format:
     footer: "© Leon Martin 2024"
     show-notes: false
     auto-play-media: true
+  pdf: default
 execute:
   cache: true
 ---
