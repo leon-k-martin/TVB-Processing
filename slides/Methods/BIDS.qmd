@@ -32,3 +32,7 @@
 - iEEG (Intracranial Electroencephalography)
 - PET (Positron Emission Tomography)
 :::
+
+
+
+## BIDS Extension Computational Modeling (BEP034)
