@@ -14,95 +14,97 @@ references:
   citeproc: true
   citations-hover: true
   csl: apa.csl
+include-in-header:
+  - text: |
+      <link rel = "shortcut icon" href = "images/logo.svg" />
 format:
   revealjs:
+    favicon: images/logo.svg
     chalkboard:
       buttons: true
     mermaid:
       theme: neutral
     theme: [default, clean.scss]
-    toc: true
-    toc-depth: 2
+    toc: false
+    toc-depth: 1
     toc-expand: true
     auto-stretch: false
     incremental: false
     footer: "© Leon Martin 2024"
+    show-notes: false
 execute:
   cache: true
 ---
 
-# Introduction
+## Table of Contents
+- Challenges of Brain Imaging
+- MRI Basics
+- Impact of Analysis/Processing Pipelines
+- Modeling Brain Network Dynamics
+
+
+
+<!-- Introduction -->
 {{< include slides/Theory/BrainNetworks/ChallangesBrainModeling.qmd >}}
 
 {{< include slides/Theory/MR_Physics/Overview.qmd >}}
 
+##
+![](slides/Theory/FallSchool21%20-%20MRbasics_LM.gif){height=800px, width=auto}
 
 {{< include slides/Theory/Reproducibility/BotvinikNezer2020.qmd >}}
 
 {{< include slides/Theory/BrainNetworks/ConceptsAndTerminology.qmd >}}
 
-## Simulating Whole-Brain Dynamics
-:::: {.columns}
 
-::: {.column width=40%}
-- Multimodal data integration
-- Models simulating local neural activity are coupled based on a whole-brain network
-- Empirical data features can be used for parameter optimization and model fitting
-:::
-
-::: {.column width=60%}
-![](https://ars.els-cdn.com/content/image/1-s2.0-S0960982218310455-gr1_lrg.jpg){width=900px fig-align="right"}
-:::
-::::
-
-::: {.citations}
-[@Deco2018]
-:::
 
 {{< include slides/Theory/BrainNetworks/BNM.qmd >}}
 
 
-::: {.citations}
-[@Martin2024]
-:::
-
 ## Empirical data features
 {{< include slides/Theory/BrainNetworks/Connectomes.qmd >}}
 
-## EEG
-![](images/Zorzos2021_Fig1.webp)
-
-- Empirical: Data is projected to source space to fit model
-- Simulated: Forward-modelling via leadfield matrix
+## Empirical data features
+{{< include slides/Theory/BrainNetworks/EEG.qmd >}}
 
 
-## From data to knowledge
-![](images/Data-Knowledge-Arrow.svg){width="auto" height="200"}
-
-::: {.citations}
-[@Schirner2015]
-:::
-
-
-# Methods
+<!-- Methods -->
 {{< include slides/Methods/MinimalPreprocessing/Overview.qmd >}}
 
-
-::: {.citations}
-[@Schirner2015]
-:::
 
 ## Structural Processing
 
 {{< include slides/Methods/MinimalPreprocessing/HCP.qmd >}}
 
 
+## Local and Global Connectivity
+![](https://ars.els-cdn.com/content/image/1-s2.0-S1053811915000051-gr4_lrg.jpg){width=700px fig-align="center"}
 
 ::: {.citations}
-[@Zorzos2021]
+[@SanzLeon2015]
 :::
 
+::: {.notes}
+**Spatial Scales of Structural Connectivity**
 
+- **Human Cortex Representation**
+  - Depicted as a triangular mesh (lower panel).
+
+- **Local Connections**
+  - Represented with a kernel function, $W_{\xi}(z)$, of the exponential family.
+  - Associated with intracortical fibers.
+
+- **Anatomical Parcellation**
+  - Cortex divided into a finite number of patches (upper right).
+
+- **Connectome**
+  - Connections between parcels represented as Uv = 2.
+
+- **Time-Delays**
+  - Introduced via long-range connections {$u_{jk}$, $\tau_{jk}$}.
+:::
+
+<!-- Workflows -->
 {{< include slides/Methods/Snakemake/Overview.qmd >}}
 
 {{< include slides/Methods/Snakemake/Rules.qmd >}}

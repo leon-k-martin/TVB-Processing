@@ -10,7 +10,7 @@ fc = loadmat("data/HCP_DK-FC_DK-SC_Glasser-FCD/avgFC_DK.mat")["avgFC"]
 sc = loadmat("data/HCP_DK-FC_DK-SC_Glasser-FCD/avgSC_DK.mat")["SC_avg_weights"]
 
 
-info = pd.read_csv(
+df_info = pd.read_csv(
     "data/HCP_DK-FC_DK-SC_Glasser-FCD/fs_default.txt",
     sep="\s+",
     comment="#",
@@ -18,10 +18,10 @@ info = pd.read_csv(
     names=["Index", "Region", "Description", "R", "G", "B", "Alpha"],
 )
 
-info = info.drop_duplicates(subset="Index")[1:]
+df_info = df_info.drop_duplicates(subset="Index")[1:]
 
-fc = pd.DataFrame(fc, index=info["Region"], columns=info["Region"])
-sc = pd.DataFrame(sc, index=info["Region"], columns=info["Region"])
+fc = pd.DataFrame(fc, index=df_info["Region"], columns=df_info["Region"])
+sc = pd.DataFrame(sc, index=df_info["Region"], columns=df_info["Region"])
 
 
 def matrix2graph(fc, percentile=60):
@@ -29,7 +29,7 @@ def matrix2graph(fc, percentile=60):
     G = nx.from_pandas_adjacency(fc_thresh)
     isolated_nodes = list(nx.isolates(G))
     G.remove_nodes_from(isolated_nodes)
-    node_colors = info[info["Region"].isin(G.nodes)][["R", "G", "B"]].values / 255
+    node_colors = df_info[df_info["Region"].isin(G.nodes)][["R", "G", "B"]].values / 255
     node_colors = {node: color for node, color in zip(G.nodes, node_colors)}
     node_shapes = {node: "o" if node.startswith("L") else "s" for node in G.nodes}
     return G, node_colors, node_shapes
