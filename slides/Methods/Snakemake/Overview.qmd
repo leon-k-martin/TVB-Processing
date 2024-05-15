@@ -9,6 +9,7 @@
 - **Python**-based
 - Interoperable with hcp cluster or cloud computing **and** local execution.
 - Flexible and efficient **job scheduling**
+- Supports **containerized workflows**
 
 :::
 ::: {.column}

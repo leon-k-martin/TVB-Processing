@@ -1,7 +1,7 @@
 ### MRI
 
 :::: {.columns}
-::: {.column width=80%}
+::: {.column width=70%}
 ```{python}
 # | label: fig-connectomes
 # | fig-cap: "Average parcellated structural and functional connectomes (84 Areas)"
@@ -34,11 +34,20 @@ plt.show()
 ```
 :::
 
-::: {.column width=20% layout="[[-1], [1], [-1]]"}
-![](images/DesikanKillianySurface.svg){width=800px}
+::: {.column .r-fit-text .smaller width=30%}
+![](images/DesikanKillianySurface.svg){width=200px}
+
+- Structural connectivity (SC): **Anatomical connections**
+- Functional connectivity (FC): **Statistical dependencies**
+
 :::
 ::::
 
 ::: {.citations}
 [@Fischl2002; @Desikan2006]
+:::
+
+
+::: {.notes}
+**Connectome**: Weighted Graph with nodes as brain areas and edges characterizing the
 :::

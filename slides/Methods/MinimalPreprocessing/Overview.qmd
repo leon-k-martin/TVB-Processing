@@ -2,7 +2,7 @@
 ![](images/Pipeline.svg){width=80% fig-align="center"}
 
 ::: {.citations}
-[@Schirner2015]
+[@Schirner2015; @Glasser2013]
 :::
 
 ::: {.notes}

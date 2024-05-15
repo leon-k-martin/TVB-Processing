@@ -1,0 +1,26 @@
+## Local and Global Connectivity
+![](images/Global_Local_Connectivity.svg){width=700px fig-align="center"}
+
+::: {.citations}
+[@SanzLeon2015]
+:::
+
+::: {.notes}
+**Spatial Scales of Structural Connectivity**
+
+- **Human Cortex Representation**
+  - Depicted as a triangular mesh (lower panel).
+
+- **Local Connections**
+  - Represented with a kernel function, $W_{\xi}(z)$, of the exponential family.
+  - Associated with intracortical fibers.
+
+- **Anatomical Parcellation**
+  - Cortex divided into a finite number of patches (upper right).
+
+- **Connectome**
+  - Connections between parcels represented as Uv = 2.
+
+- **Time-Delays**
+  - Introduced via long-range connections {$u_{jk}$, $\tau_{jk}$}.
+:::
