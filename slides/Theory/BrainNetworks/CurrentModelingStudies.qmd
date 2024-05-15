@@ -1,6 +1,6 @@
 ## Current Modeling Studies {.smaller}
 
-::: {layout="[[1,1],[1,1]]" margin-top=0px margin-bottom=0px}
+::: {layout="[[1,1],[1,1]]" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.8em;"}
 ![Dynamical Brain Model of Decision Making Processes [@Schirner2023]](images/Schirner2023_Fig2.png){width=75% fig-align="center" margin-top=0px}
 
 ![Network Structure Shapes Cortical Travelling Waves [@Koller2024]](images/Koller2024_TravellingWaves.mp4){loop="true" fig-align="center"}

@@ -30,7 +30,7 @@ format:
     toc-expand: true
     auto-stretch: false
     incremental: false
-    footer: "© Leon Martin 2024"
+    footer: "© 2024 Leon Martin, Brain Simulation Section, Charité University Medicine Berlin"
     show-notes: false
     auto-play-media: true
   pdf: default
