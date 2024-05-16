@@ -1,9 +1,42 @@
 ### EEG
 ![](images/Zorzos2021_Fig1.webp)
 
+:::: {.columns}
+::: {.column width=80%}
 - Empirical: Data is projected to source space to fit model
 - Simulated: Forward-modelling via leadfield matrix
+:::
+:::{.column width=20%}
+$$
+\mathbf{V} = \mathbf{L} \cdot \mathbf{J}
+$$
+:::
 
+::::
 ::: {.citations}
 [@Zorzos2021]
+:::
+
+::: {.notes}
+
+
+V: Voltages on the scalp
+L: Leadfield matrix
+J: Currents in the source
+
+- **Source Localization**: Based on the anatomical model of a subject's cortical surface.
+- **Sensor Registration**: Registering sensor locations to the source space.
+- **Lead-Field Matrix Computation**: Using a sphere-head model fit to meshes representing:
+  - Boundaries between cortical surface and skull.
+  - Boundaries between skull and skin.
+  - Boundaries between skin and air.
+- **Customization**: Head model and gain matrix customized to each subject's anatomy.
+
+**Inverse Problem:**
+
+- In EEG source localization, the inverse problem involves estimating the distribution of neural sources J from the measured scalp potentials V.
+- Considered ill-posed because no unique solution.
+- Many different source configurations can produce similar scalp potentials.
+- small errors in the measurements can lead to large errors in the estimated sources.
+
 :::
