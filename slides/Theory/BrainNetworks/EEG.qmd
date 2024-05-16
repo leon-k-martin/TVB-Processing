@@ -18,7 +18,11 @@ $$
 :::
 
 ::: {.notes}
+**Source Imaging**: Programmatic interpretation of EEG results (What we are intuitively doing when looking at EEG data)
 
+Challenges:
+- Oblique currents
+- Electric resistance (of different tissues)
 
 V: Voltages on the scalp
 L: Leadfield matrix
@@ -38,5 +42,7 @@ J: Currents in the source
 - Considered ill-posed because no unique solution.
 - Many different source configurations can produce similar scalp potentials.
 - small errors in the measurements can lead to large errors in the estimated sources.
+
+
 
 :::
