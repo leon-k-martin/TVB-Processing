@@ -39,6 +39,8 @@ execute:
 ---
 
 {{< include slides/Theory/BrainNetworks/ChallangesBrainModeling.qmd >}}
+{{< include slides/Theory/BrainNetworks/CurrentModelingStudies.qmd >}}
+{{< include slides/Theory/BrainNetworks/BNM_BuildingBlocks.qmd >}}
 
 {{< include slides/Theory/MR_Physics/Overview.qmd >}}
 
@@ -51,7 +53,6 @@ execute:
 {{< include slides/Theory/BrainNetworks/ConceptsAndTerminology.qmd >}}
 
 {{< include slides/Theory/BrainNetworks/BNM_Overview.qmd >}}
-{{< include slides/Theory/BrainNetworks/CurrentModelingStudies.qmd >}}
 {{< include slides/Theory/BrainNetworks/BNM_BuildingBlocks.qmd >}}
 
 ## Empirical data features

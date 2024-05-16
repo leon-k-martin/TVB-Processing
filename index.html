@@ -519,6 +519,93 @@ Leon Martin
           display:block!important;
       }</style></aside>
 </section>
+<section id="current-modeling-studies" class="slide level2 smaller">
+<h2>Current Modeling Studies</h2>
+<div class="quarto-layout-panel" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.8em;" data-layout="[[1,1],[1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Schirner2023_Fig2.png" style="width:75.0%" data-margin-top="0px"></p>
+<figcaption>Dynamical Brain Model of Decision Making Processes <span class="citation" data-cites="Schirner2023">(<a href="#/references" role="doc-biblioref" onclick="">Schirner, Deco, and Ritter 2023</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><video data-src="images/Koller2024_TravellingWaves.mp4" loop="true" controls=""><a href="images/Koller2024_TravellingWaves.mp4">Video</a></video></p>
+<figcaption>Network Structure Shapes Cortical Travelling Waves <span class="citation" data-cites="Koller2024">(<a href="#/references" role="doc-biblioref" onclick="">Koller, Schirner, and Ritter 2024</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.eneuro.org/content/eneuro/11/4/ENEURO.0345-23.2023/F3.large.jpg" style="width:60.0%"></p>
+<figcaption>Longitudinal Alzheimer’s Proteinopathologic Disease Progression Model <span class="citation" data-cites="CabreraAlvarez2024">(<a href="#/references" role="doc-biblioref" onclick="">Cabrera-Álvarez et al. 2024</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.medrxiv.org/content/medrxiv/early/2022/01/21/2022.01.19.22269404/F2.large.jpg" style="width:60.0%"></p>
+<figcaption>The Virtual Epileptic Patient - probabilistic brain modeling in drug-resistant epilepsy <span class="citation" data-cites="Wang2022">(<a href="#/references" role="doc-biblioref" onclick="">Wang et al. 2022</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="citations">
+
+</div>
+<aside class="notes">
+<p><strong>Schirner2023</strong> - <strong>Tuning curves for a reduced model (two nodes)</strong>: - Identical to the 379-nodes BNM. - FC (correlation) between the two nodes increased smoothly and monotonically as a function of their E/I-ratio. - The relationship between E/I-ratio and FC persisted when: - <strong>Noise strength</strong> (upper panel; Eqs. 5 and 6) was modulated. - <strong>Structural coupling strength</strong> (lower panel; Eqs. 1 and 2) was modulated. - Both parameters are fixed during the fitting of the full 379-nodes model.</p>
+<ul>
+<li><strong>Fitting results for the full 379-nodes model</strong>:
+<ul>
+<li>One exemplary FC.</li>
+<li><strong>Empirical FC</strong>: Upper triangular portion of the matrix.</li>
+<li><strong>Simulated FC</strong>: Lower triangular portion of the matrix.</li>
+<li><strong>Joint distributions</strong>:
+<ul>
+<li>Without E/I-tuning (upper panel).</li>
+<li>With E/I-tuning (lower panel).</li>
+</ul></li>
+</ul></li>
+<li><strong>Pearson correlations and RMSEs between empirical and simulated FCs</strong>:
+<ul>
+<li><strong>Three model variants</strong>:
+<ul>
+<li>EI-tuning: Tuning algorithm applied on both E and I.</li>
+<li>E-tuning: Tuning algorithm applied only on E.</li>
+<li>Original: Tuning of a scalar global coupling scaling factor to rescale.</li>
+</ul></li>
+<li>N = 650 empirical and simulated FCs.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="building-blocks-of-a-brain-network-model" class="slide level2">
+<h2>Building Blocks of a Brain Network Model</h2>
+<p><img data-src="slides/Theory/BrainNetworks/BNM_Framework.svg"></p>
+<div class="citations">
+<p><span class="citation" data-cites="Martin2024">(<a href="#/references" role="doc-biblioref" onclick="">Martin et al. 2024</a>)</span></p>
+</div>
+</section>
 <section id="mr-physics-overview" class="slide level2">
 <h2>MR-Physics Overview</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -717,87 +804,7 @@ Leon Martin
 <p><span class="citation" data-cites="Deco2018">(<a href="#/references" role="doc-biblioref" onclick="">Deco et al. 2018</a>)</span></p>
 </div>
 </section>
-<section id="current-modeling-studies" class="slide level2 smaller">
-<h2>Current Modeling Studies</h2>
-<div class="quarto-layout-panel" style="margin-top: 0px;  margin-bottom: 0px; font-size: 0.8em;" data-layout="[[1,1],[1,1]]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/Schirner2023_Fig2.png" style="width:75.0%" data-margin-top="0px"></p>
-<figcaption>Dynamical Brain Model of Decision Making Processes <span class="citation" data-cites="Schirner2023">(<a href="#/references" role="doc-biblioref" onclick="">Schirner, Deco, and Ritter 2023</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><video data-src="images/Koller2024_TravellingWaves.mp4" loop="true" controls=""><a href="images/Koller2024_TravellingWaves.mp4">Video</a></video></p>
-<figcaption>Network Structure Shapes Cortical Travelling Waves <span class="citation" data-cites="Koller2024">(<a href="#/references" role="doc-biblioref" onclick="">Koller, Schirner, and Ritter 2024</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://www.eneuro.org/content/eneuro/11/4/ENEURO.0345-23.2023/F3.large.jpg" style="width:60.0%"></p>
-<figcaption>Longitudinal Alzheimer’s Proteinopathologic Disease Progression Model <span class="citation" data-cites="CabreraAlvarez2024">(<a href="#/references" role="doc-biblioref" onclick="">Cabrera-Álvarez et al. 2024</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://www.medrxiv.org/content/medrxiv/early/2022/01/21/2022.01.19.22269404/F2.large.jpg" style="width:60.0%"></p>
-<figcaption>The Virtual Epileptic Patient - probabilistic brain modeling in drug-resistant epilepsy <span class="citation" data-cites="Wang2022">(<a href="#/references" role="doc-biblioref" onclick="">Wang et al. 2022</a>)</span></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="citations">
-
-</div>
-<aside class="notes">
-<p><strong>Schirner2023</strong> - <strong>Tuning curves for a reduced model (two nodes)</strong>: - Identical to the 379-nodes BNM. - FC (correlation) between the two nodes increased smoothly and monotonically as a function of their E/I-ratio. - The relationship between E/I-ratio and FC persisted when: - <strong>Noise strength</strong> (upper panel; Eqs. 5 and 6) was modulated. - <strong>Structural coupling strength</strong> (lower panel; Eqs. 1 and 2) was modulated. - Both parameters are fixed during the fitting of the full 379-nodes model.</p>
-<ul>
-<li><strong>Fitting results for the full 379-nodes model</strong>:
-<ul>
-<li>One exemplary FC.</li>
-<li><strong>Empirical FC</strong>: Upper triangular portion of the matrix.</li>
-<li><strong>Simulated FC</strong>: Lower triangular portion of the matrix.</li>
-<li><strong>Joint distributions</strong>:
-<ul>
-<li>Without E/I-tuning (upper panel).</li>
-<li>With E/I-tuning (lower panel).</li>
-</ul></li>
-</ul></li>
-<li><strong>Pearson correlations and RMSEs between empirical and simulated FCs</strong>:
-<ul>
-<li><strong>Three model variants</strong>:
-<ul>
-<li>EI-tuning: Tuning algorithm applied on both E and I.</li>
-<li>E-tuning: Tuning algorithm applied only on E.</li>
-<li>Original: Tuning of a scalar global coupling scaling factor to rescale.</li>
-</ul></li>
-<li>N = 650 empirical and simulated FCs.</li>
-</ul></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="building-blocks-of-a-brain-network-model" class="slide level2">
+<section id="building-blocks-of-a-brain-network-model-1" class="slide level2">
 <h2>Building Blocks of a Brain Network Model</h2>
 <p><img data-src="slides/Theory/BrainNetworks/BNM_Framework.svg"></p>
 <div class="citations">
