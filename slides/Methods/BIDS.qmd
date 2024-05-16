@@ -1,25 +1,27 @@
 ## Brain Imaging Data Structure {.r-fit-text .smaller}
 
-:::: {.columns}
+:::: {.columns style="margin-top: 0px;  margin-bottom: 0px;"}
 ::: {.column width=80%}
-:::{.callout-tip .smaller}
+:::{.callout-tip .smaller style="margin-top: 0px;  margin-bottom: 0px;"}
 - BIDS stands for Brain Imaging Data Structure.
 - It is a standard for organizing and describing neuroimaging and electrophysiological data.
 - The goal is to enhance reproducibility, transparency, and data sharing in the neuroscience community.
 :::
 :::
-::: {.column width=20% layout="[-1], [1], [-1]"}
-![](images/BIDS_logo_black_transparent_background_crop.png){width=100%, fig-align="center"}
+::: {.column width=20% layout="[-1], [1], [-1]" }
+![](images/BIDS_logo_black_transparent_background_crop.png)
 :::
 ::::
 
+::: {style="margin-top: 0px;  margin-bottom: 0px;"}
 **Key Features**
 
 - **Organized Directory Structure**: Standardizes how data files and metadata are stored.
 - **Standard Naming Conventions**: Ensures consistency across datasets.
 - **Comprehensive Metadata**: Includes detailed descriptions of the data and acquisition methods.
+:::
 
-![](images/BIDS_Name-Format.png){margin-top=0px, fig-align="center"}
+![](images/BIDS_Name-Format.png){fig-align="center" style="margin-top: 0px;  margin-bottom: 0px;"}
 
 **Resources**: [BIDS Specification](https://bids.neuroimaging.io/), [BIDS Starter Kit](https://github.com/bids-standard/bids-starter-kit)
 

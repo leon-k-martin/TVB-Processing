@@ -28,6 +28,12 @@
 :::
 
 ::: {.notes}
+
+- Previous studies with the mixed gambles task suggested that activity in the **ventromedial prefrontal cortex** and **ventral striatum** (and other) is related to the magnitude of the potential gain.
+- 9 Predefined Hypotheses
+  - Each hypothesis predicted fMRI activations in a specific brain region, in relation to a specific aspect of the task (gain or loss amount) and a specific group.
+  - analysis teams were instructed to report their results on the basis of a whole-brain analysis
+
 - **Need for validation and sharing of complex image processing workflows!!**
 
 *Figure2*: Investigates statistical variability across 64 different research teams.

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.554">
 
   <meta name="author" content="Leon Martin">
-  <meta name="dcterms.date" content="2024-05-15">
+  <meta name="dcterms.date" content="2024-05-16">
   <title>Data Processing for Building Digital Brain Twins with The Virtual Brain</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -435,7 +435,7 @@ Leon Martin
     </div>
 </div>
 
-  <p class="date">2024-05-15</p>
+  <p class="date">2024-05-16</p>
 </section>
 <section id="main-challenges" class="slide level2">
 <h2>Main Challenges</h2>
@@ -581,6 +581,12 @@ Leon Martin
 </div>
 <aside class="notes">
 <ul>
+<li>Previous studies with the mixed gambles task suggested that activity in the <strong>ventromedial prefrontal cortex</strong> and <strong>ventral striatum</strong> (and other) is related to the magnitude of the potential gain.</li>
+<li>9 Predefined Hypotheses
+<ul>
+<li>Each hypothesis predicted fMRI activations in a specific brain region, in relation to a specific aspect of the task (gain or loss amount) and a specific group.</li>
+<li>analysis teams were instructed to report their results on the basis of a whole-brain analysis</li>
+</ul></li>
 <li><strong>Need for validation and sharing of complex image processing workflows!!</strong></li>
 </ul>
 <p><em>Figure2</em>: Investigates statistical variability across 64 different research teams.</p>
@@ -1213,9 +1219,9 @@ rule create_sc:
 </section>
 <section id="brain-imaging-data-structure" class="slide level2 smaller">
 <h2>Brain Imaging Data Structure</h2>
-<div class="columns">
+<div class="columns" style="margin-top: 0px;  margin-bottom: 0px;">
 <div class="column" style="width:80%;">
-<div class="smaller">
+<div class="smaller" style="margin-top: 0px;  margin-bottom: 0px;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1247,15 +1253,17 @@ rule create_sc:
 </div>
 </div>
 </div>
+<div style="margin-top: 0px;  margin-bottom: 0px;">
 <p><strong>Key Features</strong></p>
 <ul>
 <li><strong>Organized Directory Structure</strong>: Standardizes how data files and metadata are stored.</li>
 <li><strong>Standard Naming Conventions</strong>: Ensures consistency across datasets.</li>
 <li><strong>Comprehensive Metadata</strong>: Includes detailed descriptions of the data and acquisition methods.</li>
 </ul>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/BIDS_Name-Format.png" class="quarto-figure quarto-figure-center" data-margin-top="0px,"></p>
+<p><img data-src="images/BIDS_Name-Format.png" class="quarto-figure quarto-figure-center" style="margin-top: 0px;  margin-bottom: 0px;"></p>
 </figure>
 </div>
 <p><strong>Resources</strong>: <a href="https://bids.neuroimaging.io/">BIDS Specification</a>, <a href="https://github.com/bids-standard/bids-starter-kit">BIDS Starter Kit</a></p>
