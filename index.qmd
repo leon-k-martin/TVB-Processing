@@ -79,6 +79,7 @@ execute:
 
 {{< include slides/Methods/Datalad.qmd >}}
 
+# Thank you!
 
 # References
 

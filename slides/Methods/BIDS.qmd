@@ -87,3 +87,36 @@ from tvb.simulator.models import Epileptor
 :::
 
 ::::
+
+
+## BIDS Folder Structure of a TVB Project{.smaller .centered}
+
+📁 Project/
+
+    📁 sub-1/
+
+        📁 net/
+
+            📄 sub-1_nt-distances_desc-SC_net.json
+
+            📈 sub-1_nt-distances_desc-SC_net.tsv
+
+            📄 sub-1_nt-weights_desc-SC_net.json
+
+            📈 sub-1_nt-weights_desc-SC_net.tsv
+
+        📁 eq/
+
+            📄 sub-1_desc-JansenRit_lems.json
+
+            📈 sub-1_desc-JansenRit_lems.xml
+
+        📁 ts/
+
+            📄 sub-1_desc-simVOIy1_ts.json
+
+            📈 sub-1_desc-simVOIy1_ts.tsv
+
+            📄 sub-1_desc-simVOIy2_ts.json
+
+            📈 sub-1_desc-simVOIy2_ts.tsv
