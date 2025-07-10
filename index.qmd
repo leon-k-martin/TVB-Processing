@@ -37,6 +37,8 @@ format:
 execute:
   cache: true
 ---
+##
+![](images/agenda.png)
 
 {{< include slides/Theory/BrainNetworks/ChallangesBrainModeling.qmd >}}
 {{< include slides/Theory/BrainNetworks/CurrentModelingStudies.qmd >}}
